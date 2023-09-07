@@ -1,0 +1,204 @@
+{
+  // THEME
+  "workbench.colorTheme": "Community Material Theme High Contrast",
+  "workbench.iconTheme": "material-icon-theme",
+
+  ////////////////////////////
+  ////     FORMATTERS     ////
+  ////////////////////////////
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[yaml]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "python.condaPath": "/home/jaydenelliott/miniconda3/condabin/conda",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<esc>"]
+    },
+    {
+      "before": ["k", "j"],
+      "after": ["<esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
+        {
+          "command": "undo"
+        }
+      ]
+    },
+    {
+      "before": ["<C-d>"],
+      "after": ["<C-d>", "z", "z"]
+    },
+    {
+      "before": ["<C-u>"],
+      "after": ["<C-u>", "z", "z"]
+    },
+    {
+      "before": ["<C-o>"],
+      "after": ["<C-o>", "z", "z"]
+    },
+    {
+      "before": ["<C-i>"],
+      "after": ["<C-i>", "z", "z"]
+    },
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z"]
+    },
+    {
+      "before": ["p"],
+      "after": ["p", "z", "z"]
+    },
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "redo"
+        }
+      ]
+    }
+  ],
+  // Prevent pasteboard (register) override on paste
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors.normal": "#333845",
+  "vim.statusBarColors.commandlineinprogress": "#254023",
+  "vim.statusBarColors.insert": "#403345",
+  "vim.statusBarColors.searchinprogressmode": "#352340",
+  "vim.statusBarColors.visual": "#17364d",
+  "vim.statusBarColors.visualline": "#17364d",
+  "vim.statusBarColors.visualblock": "#17364d",
+  "editor.lineNumbers": "relative",
+  ////////////////////////////
+  ////       VSCODE       ////
+  ////////////////////////////
+  "editor.wordWrap": "on",
+  "explorer.confirmDragAndDrop": false,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "editor.mouseWheelZoom": true,
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "terminal.integrated.scrollback": 1000000,
+  "editor.selectionClipboard": false,
+
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.startupEditor": "none",
+  "files.trimTrailingWhitespace": true,
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.colorCustomizations": {
+    "editor.findMatchBackground": "#40eeab4f",
+    "editor.selectionHighlightBackground": "#40eeab4f",
+    "editor.selectionBackground": "#40eeab4f",
+    "statusBar.background": "#17364d",
+    "statusBar.noFolderBackground": "#17364d",
+    "statusBar.debuggingBackground": "#17364d"
+  },
+  "explorer.confirmDelete": false,
+  "search.exclude": {
+    "**/.cargo": true,
+    "**/build.ninja": true,
+    "**/compile_commands.json": true,
+    "**/target": true,
+    "**/Vendors": true
+  },
+  "workbench.colorCustomizations": {
+    "editor.findMatchBackground": "#40eeab4f",
+    "editor.selectionHighlightBackground": "#40eeab4f",
+    "editor.selectionBackground": "#40eeab4f",
+    "statusBar.background": "#17364d",
+    "statusBar.noFolderBackground": "#17364d",
+    "statusBar.debuggingBackground": "#17364d"
+  },
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "go.toolsManagement.autoUpdate": true,
+  "workbench.editorLargeFileConfirmation": 20,
+  "clangd.detectExtensionConflicts": false,
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "zsh"
+    },
+    "fish": {
+      "path": "fish"
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell"
+    },
+    "Zsh": {
+      "path": "/usr/bin/bash"
+    }
+  },
+  "settingsSync.keybindingsPerPlatform": false,
+  "extensions.ignoreRecommendations": true,
+  "window.zoomLevel": -1
+}

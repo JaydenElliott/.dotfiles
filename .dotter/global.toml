@@ -1,0 +1,24 @@
+[desktop]
+depends = ["shell", "kitty", "nvim", "gui", "apps"]
+
+[docker]
+depends = ["shell", "nvim"]
+
+[shell.files]
+zshrc = "~/.zshrc"
+alias = "~/.alias"
+gitconfig = "~/.gitconfig"
+
+[kitty.files]
+kitty = "~/.config/kitty/kitty.conf"
+
+[nvim.files]
+nvim = "~/.config/nvim"
+
+[gui.files]
+wallpapers = "~/.config/wallpapers"
+fonts = "~/.local/share/fonts"
+
+[apps.files]
+"vscode/keybindings.json" = "~/.config/Code/User/keybindings.json"
+"vscode/settings.json" = "~/.config/Code/User/keybindings.json"
