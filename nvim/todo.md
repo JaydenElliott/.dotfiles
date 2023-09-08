@@ -1,5 +1,3 @@
-1. which-key.nvim
-4. reach.nvim
 5. yanky
 6. neotest
 

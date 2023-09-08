@@ -1,5 +1,10 @@
-vim.keymap.set("n", "<leader>ws", vim.cmd.vsplit, { noremap = true })
-vim.keymap.set("n", "<leader>wv", vim.cmd.split, { noremap = true })
+vim.keymap.set("n", "<C-w><C-s>", vim.cmd.split, { noremap = true })
+vim.keymap.set("n", "<C-w><C-v>", vim.cmd.vsplit, { noremap = true })
+vim.keymap.set("n", "<C-w><C-k>", "<cmd>wincmd k<cr>", { noremap = true })
+vim.keymap.set("n", "<C-w><C-j>", "<cmd>wincmd j<cr>", { noremap = true })
+vim.keymap.set("n", "<C-w><C-k>", "<cmd>wincmd k<cr>", { noremap = true })
+vim.keymap.set("n", "<C-w><C-l>", "<cmd>wincmd l<cr>", { noremap = true })
+
 
 -- clear search highglighting
 -- vimkeymap.set("n", "<leader>/", vim.cmd.noh, { noremap = true })
@@ -24,4 +29,3 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- generate uuid
 vim.keymap.set("n", "<leader>u", ":r !uuidgen|sed 's/.*/\"&\"/'|tr \"[A-Z]\" \"[a-z]\"<CR>")
-

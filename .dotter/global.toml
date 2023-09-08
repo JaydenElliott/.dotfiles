@@ -10,7 +10,7 @@ alias = "~/.alias"
 gitconfig = "~/.gitconfig"
 
 [kitty.files]
-kitty = "~/.config/kitty/kitty.conf"
+kitty = "~/.config/kitty"
 
 [nvim.files]
 nvim = "~/.config/nvim"
