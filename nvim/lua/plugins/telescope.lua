@@ -7,6 +7,7 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       "smilovanovic/telescope-search-dir-picker.nvim",
       "debugloop/telescope-undo.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
@@ -14,11 +15,11 @@ return {
     },
 
     keys = {
-      { "<leader>ff",  "<cmd>Telescope find_files<cr>" },
-      { "<leader>fh",  "<cmd>Telescope find_help<cr>" },
-      { "<leader>fw",  "<cmd>Telescope grep_string<cr>",       desc = "[F]ind current [W]ord" },
-      { "<leader>fg",  "<cmd>Telescope live_grep<cr>",         desc = "[F]ind by [G]rep" },
-      { "<leader>fu",  "<cmd>Telescope undo<cr>",              desc = "[F]ind [U]ndo" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>" },
+      { "<leader>fh", "<cmd>Telescope find_help<cr>" },
+      { "<leader>fw", "<cmd>Telescope grep_string<cr>",       desc = "[F]ind current [W]ord" },
+      { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",    desc = "[F]ind by [G]rep" },
+      { "<leader>fu", "<cmd>Telescope undo<cr>",              desc = "[F]ind [U]ndo" },
       { "<leader>fd", "<cmd>Telescope search_dir_picker<cr>", desc = "[F]ind dir then grep" },
       { "<leader>fe", "<cmd>Telescope diagnostics<cr>",       desc = "[F]ind by [E]rrors/Diagnostics" },
       { "<leader>f/",
@@ -37,6 +38,7 @@ return {
       telescope.load_extension('fzf')
       telescope.load_extension('search_dir_picker')
       telescope.load_extension("undo")
+      telescope.load_extension("live_grep_args")
     end
 
 

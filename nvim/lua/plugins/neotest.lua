@@ -28,7 +28,7 @@ return {
             if not results[pos_id] then
               return
             end
-            require("neotest").output.open({ position_id = pos_id, adapter = adapter_id })
+            require("neotest").output_panel.open({ position_id = pos_id, adapter = adapter_id })
           end
         end,
       },

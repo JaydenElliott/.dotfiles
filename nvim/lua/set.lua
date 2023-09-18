@@ -8,6 +8,7 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 -- vim.wo.signcolumn = 'yes'
 vim.opt.relativenumber = true
+vim.opt.number = true
 
 vim.opt.wrap = false
 
@@ -26,3 +27,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
+
+-- new split will be on the right rather than in current pane
+vim.opt.splitbelow = true
+vim.opt.splitright = true

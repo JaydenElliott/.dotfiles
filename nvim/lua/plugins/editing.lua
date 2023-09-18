@@ -32,5 +32,11 @@ return {
     "ray-x/sad.nvim",
     dependencies = { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
     config = true,
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = true
   }
 }

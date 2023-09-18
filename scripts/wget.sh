@@ -9,3 +9,4 @@ is_installed lazydocker || curl https://raw.githubusercontent.com/jesseduffield/
 
 # oh-my-zsh
 stat $ZSH/oh-my-zsh.sh || sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+

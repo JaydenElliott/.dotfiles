@@ -150,9 +150,9 @@
     "editor.findMatchBackground": "#40eeab4f",
     "editor.selectionHighlightBackground": "#40eeab4f",
     "editor.selectionBackground": "#40eeab4f",
-    "statusBar.background": "#17364d",
-    "statusBar.noFolderBackground": "#17364d",
-    "statusBar.debuggingBackground": "#17364d"
+    "statusBar.background": "#333845",
+    "statusBar.noFolderBackground": "#333845",
+    "statusBar.debuggingBackground": "#333845"
   },
   "explorer.confirmDelete": false,
   "search.exclude": {
@@ -199,6 +199,5 @@
     }
   },
   "settingsSync.keybindingsPerPlatform": false,
-  "extensions.ignoreRecommendations": true,
-  "window.zoomLevel": -1
+  "extensions.ignoreRecommendations": true
 }
