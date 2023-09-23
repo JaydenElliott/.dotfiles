@@ -11,6 +11,10 @@ vim.keymap.set("n", "<C-w><C-l>", "<cmd>wincmd l<cr>", { noremap = true })
 -- clear search highglighting
 -- vimkeymap.set("n", "<leader>/", vim.cmd.noh, { noremap = true })
 
+
+
+-- if in two splits run ``:windo diffthis`` to compare files
+
 -- diagnostics
 vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
