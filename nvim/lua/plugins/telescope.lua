@@ -15,13 +15,13 @@ return {
     },
 
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<cr>" },
-      { "<leader>fh", "<cmd>Telescope find_help<cr>" },
-      { "<leader>fw", "<cmd>Telescope grep_string<cr>",       desc = "[F]ind current [W]ord" },
-      { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",    desc = "[F]ind by [G]rep" },
-      { "<leader>fu", "<cmd>Telescope undo<cr>",              desc = "[F]ind [U]ndo" },
-      { "<leader>fd", "<cmd>Telescope search_dir_picker<cr>", desc = "[F]ind dir then grep" },
-      { "<leader>fe", "<cmd>Telescope diagnostics<cr>",       desc = "[F]ind by [E]rrors/Diagnostics" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>",                            desc = "[F]ind [F]iles" },
+      { "<leader>fh", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", desc = "[F]ind [H]idden" },
+      { "<leader>fw", "<cmd>Telescope grep_string<cr>",                           desc = "[F]ind current [W]ord" },
+      { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",                        desc = "[F]ind by [G]rep" },
+      { "<leader>fu", "<cmd>Telescope undo<cr>",                                  desc = "[F]ind [U]ndo" },
+      { "<leader>fd", "<cmd>Telescope search_dir_picker<cr>",                     desc = "[F]ind dir then grep" },
+      { "<leader>fe", "<cmd>Telescope diagnostics<cr>",                           desc = "[F]ind by [E]rrors/Diagnostics" },
       { "<leader>f/",
         function()
           require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

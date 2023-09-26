@@ -199,5 +199,6 @@
     }
   },
   "settingsSync.keybindingsPerPlatform": false,
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "window.zoomLevel": -1
 }

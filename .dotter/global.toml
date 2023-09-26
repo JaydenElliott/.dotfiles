@@ -7,6 +7,7 @@ depends = ["shell", "nvim"]
 [shell.files]
 zshrc = "~/.zshrc"
 alias = "~/.alias"
+lazydocker.yml = "/.config/lazydocker/config.yml"
 
 [kitty.files]
 kitty = "~/.config/kitty"
