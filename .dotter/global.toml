@@ -7,7 +7,6 @@ depends = ["shell", "nvim"]
 [shell.files]
 zshrc = "~/.zshrc"
 alias = "~/.alias"
-gitconfig = "~/.gitconfig"
 
 [kitty.files]
 kitty = "~/.config/kitty"
