@@ -8,7 +8,7 @@ return {
     opts = {
       {
         ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'sql',
-          'bash', 'toml', 'json' },
+          'bash', 'toml', 'json', 'toml' },
 
         auto_install = false,
 
@@ -23,7 +23,7 @@ return {
             node_decremental = '<M-space>',
           },
         },
-	
+
         textobjects = {
           select = {
             enable = true,

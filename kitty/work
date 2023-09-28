@@ -1,0 +1,15 @@
+layout tall
+cd ~/
+launch nvim .
+title nvim
+
+new_tab git
+layout tall
+cd $VCG
+launch lazygit
+
+
+new_tab docker
+layout tall
+cd $VCG
+launch lazydocker

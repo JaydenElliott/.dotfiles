@@ -31,6 +31,7 @@ return {
             jsonls = {},
             pyright = {},
             tsserver = {},
+            taplo = {},
           },
         },
         config = function(_, opts)
