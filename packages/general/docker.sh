@@ -22,3 +22,7 @@ then
   sudo nvidia-ctk runtime configure --runtime=docker --set-as-default
   sudo systemctl restart docker
 fi
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker

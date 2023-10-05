@@ -1,0 +1,61 @@
+pkgbase=libnvidia-container
+pkgname=(libnvidia-container1 libnvidia-container-tools nvidia-container-runtime nvidia-container-toolkit nvidia-container-toolkit-base nvidia-docker2)
+
+pkgver=1.13.5
+pkgrel=1
+_elfver=0.7.1
+_nvmpver=495.44
+_pkgname_tools=libnvidia-container-tools
+_pkgname_tools=libnvidia-container-tools
+pkgdesc='NVIDIA container runtime library'
+arch=('x86_64')
+url='https://github.com/NVIDIA/libnvidia-container'
+license=('Apache')
+depends=(libcap libseccomp libtirpc)
+
+source=("https://nvidia.github.io/libnvidia-container/stable/debian10/amd64/./${pkgname[0]}_${pkgver}-1_amd64.deb" "https://nvidia.github.io/libnvidia-container/stable/debian10/amd64/./${pkgname[1]}_${pkgver}-1_amd64.deb" "https://nvidia.github.io/libnvidia-container/stable/debian10/amd64/./${pkgname[2]}_3.13.0-1_all.deb" "https://nvidia.github.io/libnvidia-container/stable/debian10/amd64/./${pkgname[3]}_${pkgver}-1_amd64.deb" "https://nvidia.github.io/libnvidia-container/stable/debian10/amd64/./${pkgname[4]}_${pkgver}-1_amd64.deb" "https://nvidia.github.io/libnvidia-container/stable/debian10/amd64/./${pkgname[5]}_2.13.0-1_all.deb")
+sha256sums=('7e53887ef9168dbcc141defc7c56dd593d865e78c5fa9fc96193eb0691d028b8'
+            '6a2dcbaf7958fcfa4a2403d68741cb7fd11ae5707ab6c12231b7790ecdc5a7ad'
+            'dbe89dbab86e0136d4193e9e192a2ba5c859f865d72b135e32f778f77edcc21d'
+            'e2518980a1b745271745b048e2d0f985140f3cd0dddc20b20f90d2893f71a9e8'
+            '8899117eb3efd7ab242d32ab91c27ee07af0018fb2c20204c325131f3c3904ea'
+            'ddfa0bbe165b4497d411d147ba60bc98570460f6ec67557a040a8fa39c562229')
+prepare() {
+  for package in "${pkgname[@]}"; do
+    mkdir -p "$srcdir/${package}/"
+    if [[ "${package}" -eq "nvidia-container-toolkit" ]]; then
+      ar -xv "${package}"_*.deb; ls -al; tar -xf "data.tar.xz" -C "$srcdir/${package}/"
+    else
+      tar -xf "${package}"_*.tar.zst -C "$srcdir/${package}/"
+    fi
+  done
+}
+
+install_pkg() {
+  cd "${1}"
+  find usr/bin -type f -exec install -Dm755 "{}" "$pkgdir/{}" \; || true
+  find usr/lib -type f -exec install -Dm755 "{}" "$pkgdir/{}" \; || true
+  find usr/share -type f -exec install -Dm755 "{}" "$pkgdir/{}" \; || true
+  find etc -type f -exec install -Dm755 "{}" "$pkgdir/{}" \; || true
+}
+
+package_libnvidia-container1() {
+  install_pkg "$srcdir/${pkgname[0]}"
+}
+
+package_libnvidia-container-tools() {
+  install_pkg "$srcdir/${pkgname[1]}"
+}
+package_nvidia-container-runtime(){
+  install_pkg "$srcdir/${pkgname[2]}"
+}
+package_nvidia-container-toolkit(){
+  install_pkg "$srcdir/${pkgname[3]}"
+}
+package_nvidia-container-toolkit-base(){
+  install_pkg "$srcdir/${pkgname[4]}"
+}
+package_nvidia-docker2(){
+  install_pkg "$srcdir/${pkgname[5]}"
+}
+

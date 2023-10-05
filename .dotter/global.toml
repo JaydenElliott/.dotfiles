@@ -1,5 +1,5 @@
 [desktop]
-depends = ["shell", "kitty", "nvim", "gui", "apps"]
+depends = ["shell", "kitty", "nvim", "gui"]
 
 [docker]
 depends = ["shell", "nvim"]
@@ -18,7 +18,3 @@ nvim = "~/.config/nvim"
 [gui.files]
 wallpapers = "~/.config/wallpapers"
 fonts = "~/.local/share/fonts"
-
-[apps.files]
-"vscode/keybindings.json" = "~/.config/Code/User/keybindings.json"
-"vscode/settings.json" = "~/.config/Code/User/settings.json"

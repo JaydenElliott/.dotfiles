@@ -1,4 +1,5 @@
 #!/bin/bash
+
 sudo dnf copr enable user/project
 sudo dnf install dnf-plugins-core
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
