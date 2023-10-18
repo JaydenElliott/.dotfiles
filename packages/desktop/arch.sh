@@ -11,4 +11,20 @@ sudo pacman -S \
 sudo yay -S \
   ticktick \
   anki \
-  tableplus
+  tableplus \
+  ulauncher
+
+
+
+# ulauncher update .desktop file
+#Comment=Application launcher for Linux
+#GenericName=Launcher
+#Categories=GNOME;GTK;Utility;
+#TryExec=ulauncher
+#Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window
+#Icon=ulauncher
+#Terminal=false
+#Type=Application
+
+
+gsettings set org.gnome.desktop.interface enable-animations false

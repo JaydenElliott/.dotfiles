@@ -34,10 +34,10 @@ return {
           end,
         },
 
-      }
+      },
     },
     keys = {
       { "\\", "<cmd>Neotree reveal left<cr>" },
-    }
+    },
   },
 }

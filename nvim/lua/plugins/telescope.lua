@@ -34,6 +34,7 @@ return {
 
     config = function(_, opts)
       local telescope = require('telescope')
+      vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
       telescope.setup(opts)
       telescope.load_extension('fzf')
       telescope.load_extension('search_dir_picker')

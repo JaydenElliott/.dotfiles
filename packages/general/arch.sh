@@ -20,10 +20,19 @@ sudo pacman -S \
   # video
   ffmpeg \
   mediainfo \
+  mpv \
 
   # DE
   xdg-desktop-portal-gnome \
-  xdg-desktop-portal
+  xdg-desktop-portal \
+
+  # compilation
+  clang \
+  gcc
+
+  # rust
+  nasm
+  gst-rtsp-server
 
   
 # oh-my-zsh
@@ -38,11 +47,34 @@ fi
 
 {{#if desktop}}
 sudo pacman -S \
+  kitty \
+  bless \
   vlc \
-  obsidian
+  mediainfo-gui  \
+  obsidian \
+  vivaldi \
+
+  xorg-xrdb \
+  polybar
 
 sudo yay -S \
-  ticktick
+  gnome-browser-connector \
+  ticktick \
+  anki \
+  tableplus \
+  ulauncher \
+  spotify
+
+# ulauncher update .desktop file
+#Comment=Application launcher for Linux
+#GenericName=Launcher
+#Categories=GNOME;GTK;Utility;
+#TryExec=ulauncher
+#Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window
+#Icon=ulauncher
+#Terminal=false
+#Type=Application
+
 {{/if}}
 
 
@@ -64,3 +96,5 @@ then
 #sudo usermod -aG docker $USER
 #newgrp docker
 fi
+
+gsettings set org.gnome.desktop.interface enable-animations false

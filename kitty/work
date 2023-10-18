@@ -1,15 +1,24 @@
+new_tab nvim
 layout tall
-cd ~/
-launch nvim .
-title nvim
+cd $VCG
+launch zsh
+
+new_tab config
+layout tall
+cd $VCG
+launch zsh
+
+new_tab docker
+layout tall
+cd $VCG/.devcontainer
+launch zsh
 
 new_tab git
 layout tall
 cd $VCG
-launch lazygit
+launch zsh
 
-
-new_tab docker
+new_tab dotfiles
 layout tall
-cd $VCG
-launch lazydocker
+cd ~/.dotfiles
+launch zsh
