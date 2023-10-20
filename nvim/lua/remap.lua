@@ -33,4 +33,6 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- generate uuid
-vim.keymap.set("n", "<leader>u", ":r !uuidgen|sed 's/.*/\"&\"/'|tr \"[A-Z]\" \"[a-z]\"<CR>")
+--local cmd = uuidgen|sed 's/.*/\"&\"/'|tr \"[A-Z]\" \"[a-z]\",
+local cmd = ":<cmd> r! uuidgen|sed \'s/.*/\"&\"/\'|tr \"[A-Z]\" \"[a-z]\",<CR>"
+vim.keymap.set("n", "<leader>u", cmd)
