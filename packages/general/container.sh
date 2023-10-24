@@ -1,30 +1,48 @@
 #!/bin/bash
 
+# essentials
 apt install -y \
-  # essentials
   zsh \
   git \
   wget \
   curl \
   htop \
-  xclip \
+  xclip
 
-  # terminal
+# terminal
+apt install -y \
   fd-find \
   ripgrep \
+  delta 
 
-  # video
+# lsp && compilers
+apt install -y \
+  build-essential \
+  clang \
+  node \
+  npm \
+  
+  
+
+
+# video
+apt install -y \
   ffmpeg \
   mediainfo \
 
+
+
+
+# required for neovim plugins
+ln -s $(which fdfind) ~/.local/bin/fd
 
 # oh-my-zsh
 if [ ! -d "$ZSH" ]; then
   mkdir -p $HOME/.config/zsh
   $ZSH/oh-my-zsh.sh || \
-   ZSH="$HOME/.config/zsh/oh-my-zsh" sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+   ZSH="$HOME/.config/zsh/.oh-my-zsh" sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$ZSH/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-$ZSH}/custom}/plugins/zsh-completions
 fi
 
 
