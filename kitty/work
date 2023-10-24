@@ -3,11 +3,6 @@ layout tall
 cd $VCG
 launch zsh
 
-new_tab config
-layout tall
-cd $VCG
-launch zsh
-
 new_tab docker
 layout tall
 cd $VCG/.devcontainer

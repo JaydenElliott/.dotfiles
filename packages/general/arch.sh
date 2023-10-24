@@ -28,10 +28,11 @@ sudo pacman -S \
 
   # compilation
   clang \
-  gcc
+  gcc \
+  protoc \
 
   # rust
-  nasm
+  nasm \
   gst-rtsp-server
 
   
@@ -85,6 +86,7 @@ sudo yay -S \
 
 if ! command -v docker &> /dev/null; 
 then
+sudo pacman -S docker-buildx
 # docker
 #cd /tmp
 #git clone https://aur.archlinux.org/nvidia-container-toolkit.git

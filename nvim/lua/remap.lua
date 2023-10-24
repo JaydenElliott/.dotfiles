@@ -28,9 +28,18 @@ vim.keymap.set('n', 'n', 'nzz', { noremap = true })
 vim.keymap.set('n', '<C-i>', '<C-i>zz', { noremap = true })
 vim.keymap.set('n', '<C-o>', '<C-o>zz', { noremap = true })
 
+-- dont override paste
+vim.keymap.set('v', 'p', 'pgvy', { noremap = true })
+
+
+
 -- moving chunks around
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- save without format
+vim.api.nvim_create_user_command('Wf', 'noautocmd w', {})
+
 
 -- generate uuid
 --local cmd = uuidgen|sed 's/.*/\"&\"/'|tr \"[A-Z]\" \"[a-z]\",
