@@ -17,8 +17,9 @@ return {
                 closureCaptureHints = { enable = true },
                 closureReturnTypeHints = { enable = true },
                 expressionAdjustmentHints = { enable = true }
-              }
+              },
             },
+            wgsl_analyzer = {},
             clangd = {},
             bashls = {},
             lua_ls = {

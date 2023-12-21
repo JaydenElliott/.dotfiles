@@ -42,6 +42,4 @@ vim.api.nvim_create_user_command('Wf', 'noautocmd w', {})
 
 
 -- generate uuid
---local cmd = uuidgen|sed 's/.*/\"&\"/'|tr \"[A-Z]\" \"[a-z]\",
-local cmd = ":<cmd> r! uuidgen|sed \'s/.*/\"&\"/\'|tr \"[A-Z]\" \"[a-z]\",<CR>"
-vim.keymap.set("n", "<leader>u", cmd)
+vim.keymap.set("n", "<leader>u", ":r !uuidgen|sed 's/.*/\"&\"/'|tr \"[A-Z]\" \"[a-z]\"<CR>")

@@ -21,7 +21,7 @@ return {
       { "<leader>fw", "<cmd>Telescope grep_string<cr>",                           desc = "[F]ind current [W]ord" },
       { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",                        desc = "[F]ind by [G]rep" },
       { "<leader>fu", "<cmd>Telescope undo<cr>",                                  desc = "[F]ind [U]ndo" },
-      { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                           desc = "[F]ind by [D]iagnostics" },
+      { "<leader>df", "<cmd>Telescope diagnostics<cr>",                           desc = "[D]iagnostics find by [F]ile" },
       { "<leader>f/",
         function()
           require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
