@@ -1,7 +1,7 @@
 pkgbase=libnvidia-container
 pkgname=(libnvidia-container1 libnvidia-container-tools nvidia-container-runtime nvidia-container-toolkit nvidia-container-toolkit-base nvidia-docker2)
 
-pkgver=1.13.5
+pkgver=1.14.3
 pkgrel=1
 _elfver=0.7.1
 _nvmpver=495.44

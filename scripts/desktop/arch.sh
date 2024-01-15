@@ -14,6 +14,12 @@ sudo yay -S \
   tableplus \
   ulauncher
 
+# ulauncher extensions
+# https://github.com/brpaz/ulauncher-file-search
+# https://github.com/tjquillan/ulauncher-system
+
+
+
 if ! command -v docker &> /dev/null; 
 then
 sudo pacman -S docker-buildx

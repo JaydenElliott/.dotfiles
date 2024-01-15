@@ -17,20 +17,21 @@ sudo pacman -S \
   fzf \
   lazydocker \
   lazygit \
-  sad 
+  sad
 
 # DE
 sudo pacman -S \
   xdg-desktop-portal-gnome \
   xdg-desktop-portal \
 
-# compilation
+# compilation and coding
 sudo pacman -S \
   clang \
   gcc \
   protoc \
   node \
-  npm
+  npm \
+  just
 
 # rust
 sudo pacman -S \
