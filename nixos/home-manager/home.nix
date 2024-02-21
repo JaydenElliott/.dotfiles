@@ -17,8 +17,11 @@
     git
     wget
     curl
+    xh # curl replacement
     htop # TODO: replace later
     xclip
+    tealdeer
+    
 
     # terminal
     fd

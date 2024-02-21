@@ -47,3 +47,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+# todo: export useful docker command for finding host ip
+export dockerhost=ip addr show docker0 | grep -Po 'inet \K[\d.]+'

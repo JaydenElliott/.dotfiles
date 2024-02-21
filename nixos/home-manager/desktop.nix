@@ -17,5 +17,11 @@
     spotify
     steam
     discord
+
+    # HYPRLAND
+    # see bindings and ipc https://hyprland.org - for nice settings
+    # plugins: https://github.com/hyprland-community/awesome-hyprland 
+    # and hall of fame https://hyprland.org/hall_of_fame/
+    # great dotfiles https://github.com/fufexan/dotfiles
   ];
 }
