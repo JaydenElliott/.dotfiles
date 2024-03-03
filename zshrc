@@ -50,4 +50,4 @@ esac
 
 
 # todo: export useful docker command for finding host ip
-export dockerhost=ip addr show docker0 | grep -Po 'inet \K[\d.]+'
+alias dockerhost=ip addr show docker0 | grep -Po 'inet \K[\d.]+'
