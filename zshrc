@@ -4,7 +4,7 @@ source ~/.alias
 export EDITOR="nvim"
 alias n="cd $HOME/.config/nvim"
 
-export ZSH="$HOME/.config/zsh/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="robbyrussell"
 
 

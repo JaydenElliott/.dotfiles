@@ -15,3 +15,6 @@ kitty = "~/.config/kitty"
 [gui.files]
 wallpapers = "~/.config/wallpapers"
 fonts = "~/.local/share/fonts"
+
+[hyprland.files]
+hypr = "~/.config/hypr"
