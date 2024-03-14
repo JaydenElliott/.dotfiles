@@ -1,0 +1,7 @@
+[arch]
+ffmpeg
+mediainfo
+
+[debian]
+ffmpeg
+mediainfo 

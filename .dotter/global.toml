@@ -1,5 +1,5 @@
 [desktop]
-depends = ["shell", "kitty", "nvim", "gui"]
+depends = ["shell", "gui"]
 
 [docker]
 depends = ["shell", "nvim"]
@@ -7,13 +7,10 @@ depends = ["shell", "nvim"]
 [shell.files]
 zshrc = "~/.zshrc"
 alias = "~/.alias"
-"lazydocker.yml" = "~/.config/lazydocker/config.yml"
-
-[kitty.files]
-kitty = "~/.config/kitty"
-
-[nvim.files]
 nvim = "~/.config/nvim"
+kitty = "~/.config/kitty"
+"lazydocker.yml" = "~/.config/lazydocker/config.yml"
+"lazygit.yml" = "~/.config/lazygit/config.yml"
 
 [gui.files]
 wallpapers = "~/.config/wallpapers"

@@ -13,6 +13,11 @@ layout tall
 cd $VCG
 launch zsh
 
+new_tab monorepo
+layout tall
+cd $VC
+launch zsh
+
 new_tab dotfiles
 layout tall
 cd ~/.dotfiles

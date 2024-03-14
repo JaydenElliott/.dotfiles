@@ -5,5 +5,6 @@ alias dt="cd ~/.dotfiles"
 alias open="nautilus ."
 alias yay-rm="yay -Rns"
 alias pacman-rm="pacman -Rs"
-alias du="docker compose up -d --no-deps --build app"
+alias du="docker compose up -d --no-deps --force-recreate  --build app --remove-orphans"
 alias dd="docker compose down"
+

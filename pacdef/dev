@@ -1,0 +1,7 @@
+[arch]
+clang
+gcc
+protoc
+node
+npm
+just

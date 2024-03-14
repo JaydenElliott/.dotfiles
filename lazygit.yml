@@ -1,6 +1,4 @@
 gui:
-  returnImmediately: true
-     
   # https://github.com/catppuccin/lazygit
   theme:
     activeBorderColor:
