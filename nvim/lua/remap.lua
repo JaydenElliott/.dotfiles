@@ -40,6 +40,5 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- save without format
 vim.api.nvim_create_user_command('Wf', 'noautocmd w', {})
 
-
 -- generate uuid
-vim.keymap.set("n", "<leader>u", ":r !uuidgen|sed 's/.*/\"&\"/'|tr \"[A-Z]\" \"[a-z]\"<CR>")
+vim.keymap.set("n", "<leader>u", "i\"<C-r>=system('uuidgen')[:-2]<CR>\",<Esc>")
