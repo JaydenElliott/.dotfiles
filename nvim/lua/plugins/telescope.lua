@@ -38,17 +38,28 @@ return {
             previewer = false,
           })
         end, { desc = '[/] Fuzzily search in current buffer' }
-      }
+      },
     },
-
     config = function(_, opts)
       local telescope = require('telescope')
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
-      telescope.setup(opts)
+      telescope.setup({
+        extensions = {
+          live_grep_args = {
+            auto_quoting = true, -- enable/disable auto-quoting
+            mappings = {         -- extend mappings
+              i = {
+                ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+                ["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " --iglob " }),
+              },
+            },
+          },
+        },
+      })
       telescope.load_extension('fzf')
+      telescope.load_extension("live_grep_args")
       telescope.load_extension('search_dir_picker')
       telescope.load_extension("undo")
-      telescope.load_extension("live_grep_args")
     end
 
 
