@@ -31,14 +31,13 @@ vim.keymap.set('n', '<C-o>', '<C-o>zz', { noremap = true })
 -- dont override paste
 vim.keymap.set('v', 'p', 'pgvy', { noremap = true })
 
-
-
--- moving chunks around
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 -- save without format
 vim.api.nvim_create_user_command('Wf', 'noautocmd w', {})
 
 -- generate uuid
 vim.keymap.set("n", "<leader>u", "i\"<C-r>=system('uuidgen')[:-2]<CR>\",<Esc>")
+
+-- you can find/replace using a different delimiter to save escaping
+-- But note that you can select a different delimiter instead:
+
+-- :%s@<doc/>@<cat\\>@

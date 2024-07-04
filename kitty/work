@@ -13,9 +13,9 @@ layout tall
 cd $VCG
 launch zsh
 
-new_tab monorepo
+new_tab streams
 layout tall
-cd $VC
+cd $VCG/build/rtsp-replay-server
 launch zsh
 
 new_tab dotfiles

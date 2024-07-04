@@ -1,5 +1,4 @@
 [arch]
-# essentials
 zsh
 git
 wget
@@ -7,7 +6,6 @@ curl
 htop
 xclip
 
-# terminal
 lnav
 fd
 ripgrep

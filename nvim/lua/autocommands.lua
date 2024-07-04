@@ -7,3 +7,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
     if stats and stats.type == "directory" then require("neo-tree.setup.netrw").hijack() end
   end,
 })
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  desc = 'Set filetype for SSH config directory',
+  pattern = '*/.ssh/config.d/*',
+  command = 'set filetype=sshconfig'
+})

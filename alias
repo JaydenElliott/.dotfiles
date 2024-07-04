@@ -7,4 +7,5 @@ alias yay-rm="yay -Rns"
 alias pacman-rm="pacman -Rs"
 alias du="docker compose up -d --no-deps --force-recreate  --build app --remove-orphans"
 alias dd="docker compose down"
-
+alias sshc="nvim ~/.ssh/config.d/work"
+alias sp="nvim ~/Documents/scrachpad"

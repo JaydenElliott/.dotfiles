@@ -1,7 +1,8 @@
 [arch]
 ffmpeg
 mediainfo
+mediainfo-gui
 
 [debian]
 ffmpeg
-mediainfo 
+mediainfo-gui
