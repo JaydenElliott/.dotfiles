@@ -5,6 +5,8 @@ return { {
   config = function()
     vim.cmd([[colorscheme onedark]])
   end,
-} }
-
-
+},
+  {
+    'fei6409/log-highlight.nvim',
+  }
+}

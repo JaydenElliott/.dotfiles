@@ -51,6 +51,7 @@ return {
               i = {
                 ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
                 ["<C-l>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " config " }),
+                ["<C-h>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " --no-ignore --hidden" }),
               },
             },
           },

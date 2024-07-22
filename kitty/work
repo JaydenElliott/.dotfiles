@@ -18,6 +18,11 @@ layout tall
 cd $VCG/build/rtsp-replay-server
 launch zsh
 
+new_tab vc
+layout tall
+cd $VC
+launch zsh
+
 new_tab dotfiles
 layout tall
 cd ~/.dotfiles
