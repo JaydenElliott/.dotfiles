@@ -1,7 +1,6 @@
 [arch]
+man-db
 clang
 gcc
-protoc
-node
 npm
 just

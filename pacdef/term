@@ -1,4 +1,8 @@
 [arch]
+neovim
+extra/zsh-completions
+zsh-autosuggestions
+
 zsh
 git
 wget
