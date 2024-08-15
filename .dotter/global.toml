@@ -10,6 +10,7 @@ alias = "~/.alias"
 pacdef = "~/.config/pacdef"
 nvim = "~/.config/nvim"
 kitty = "~/.config/kitty"
+ssh = "~/.ssh"
 "lazydocker.yml" = "~/.config/lazydocker/config.yml"
 "lazygit.yml" = "~/.config/lazygit/config.yml"
 

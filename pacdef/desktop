@@ -1,9 +1,14 @@
 [arch]
 kitty
 gnome-tweaks
+gnome-browser-connector
 discord
 ticktick
 nvidia
 nvidia-settings
 nvidia-utils
 lib32-nvidia-utils
+docker
+docker-compose
+nvidia-container-runtime
+
