@@ -12,3 +12,7 @@ docker
 docker-compose
 nvidia-container-runtime
 
+noto-fonts
+ttf-dejavu
+ttf-liberation
+noto-fonts-emoji  
