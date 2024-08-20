@@ -34,12 +34,6 @@ source <(fzf --zsh)
 # onnxruntime
 export ORT_LIB_LOCATION="/opt/onnxruntime"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/tmp/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/tmp/google-cloud-sdk/completion.zsh.inc'; fi
-
 # pnpm
 export PNPM_HOME="/home/jaydenelliott/.local/share/pnpm"
 case ":$PATH:" in
@@ -51,3 +45,11 @@ esac
 
 # todo: export useful docker command for finding host ip
 alias dockerhost=ip addr show docker0 | grep -Po 'inet \K[\d.]+'
+source /etc/profile.d/google-cloud-cli.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/tmp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/tmp/google-cloud-sdk/completion.zsh.inc'; fi
+source /etc/profile.d/google-cloud-cli.sh

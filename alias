@@ -9,3 +9,4 @@ alias du="docker compose up -d --no-deps --force-recreate  --build app --remove-
 alias dd="docker compose down"
 alias sshc="nvim ~/.ssh/config.d/work"
 alias sp="nvim ~/Documents/scrachpad"
+alias pbcopy="xclip -selection clipboard"

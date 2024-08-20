@@ -8,8 +8,6 @@ vim.keymap.set("n", "<C-w><C-l>", "<cmd>wincmd l<cr>", { noremap = true })
 
 
 
--- clear search highglighting
--- vimkeymap.set("n", "<leader>/", vim.cmd.noh, { noremap = true })
 
 
 
@@ -32,12 +30,14 @@ vim.keymap.set('n', '<C-o>', '<C-o>zz', { noremap = true })
 vim.keymap.set('v', 'p', 'pgvy', { noremap = true })
 
 -- save without format
-vim.api.nvim_create_user_command('Wf', 'noautocmd w', {})
+vim.api.nvim_create_user_command('W', 'noautocmd w', {})
+
+-- format without saving
+vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format() end, {})
+
 
 -- generate uuid
 vim.keymap.set("n", "<leader>u", "i\"<C-r>=system('uuidgen')[:-2]<CR>\",<Esc>")
 
--- you can find/replace using a different delimiter to save escaping
--- But note that you can select a different delimiter instead:
-
--- :%s@<doc/>@<cat\\>@
+-- git diff
+vim.api.nvim_create_user_command('Diff', 'DiffviewOpen', {})
