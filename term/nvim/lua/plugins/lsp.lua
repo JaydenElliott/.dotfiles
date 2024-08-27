@@ -47,13 +47,10 @@ return {
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation', buffer = bufnr })
 
 
-            -- Go to
+            ---- Go to
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition', buffer = bufnr })
             vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
               { desc = '[G]oto [D]efinition', buffer = bufnr })
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementations, { desc = '[G]oto [I]mplementations', buffer = bufnr })
-            vim.keymap.set('n', 'gt', vim.lsp.buf.type_definitions,
-              { desc = '[G]oto [T]ype definitions', buffer = bufnr })
 
             vim.keymap.set('n', '<leader>kd', vim.lsp.buf.signature_help,
               { desc = 'Signature Documentation', buffer = bufnr })

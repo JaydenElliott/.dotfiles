@@ -5,3 +5,7 @@ wget https://github.com/microsoft/onnxruntime/releases/download/v${ONNXRUNTIME_V
 sudo tar xvf onnxruntime-linux-x64-gpu-${ONNXRUNTIME_VERSION}.tgz -C /opt
 sudo ln -s /opt/onnxruntime-linux-x64-gpu-${ONNXRUNTIME_VERSION} /opt/onnxruntime
 sudo rm onnxruntime-linux-x64-gpu-${ONNXRUNTIME_VERSION}.tgz
+
+# Was in cargo/config.toml
+#[env]
+#ORT_LIB_LOCATION = "/opt/onnxruntime"

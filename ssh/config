@@ -1,5 +1,0 @@
-Host gitlab.com
-    IdentityFile ~/.ssh/work/gitlab
-Host github.com
-    IdentityFile ~/.ssh/personal/github
-AddKeysToAgent yes

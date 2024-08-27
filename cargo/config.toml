@@ -1,2 +1,0 @@
-[env]
-ORT_LIB_LOCATION = "/opt/onnxruntime"

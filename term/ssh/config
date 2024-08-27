@@ -1,0 +1,6 @@
+Include config.d/work
+
+AddKeysToAgent yes
+
+Host github.com
+    IdentityFile ~/.ssh/personal/github

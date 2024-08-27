@@ -1,6 +1,4 @@
 [arch]
 man-db
-clang
 gcc
 npm
-just

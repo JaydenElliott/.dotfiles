@@ -1,18 +1,24 @@
 [arch]
+# applications
 kitty
 gnome-tweaks
 gnome-browser-connector
 discord
 ticktick
+
+# gpu drivers
 nvidia
 nvidia-settings
 nvidia-utils
 lib32-nvidia-utils
+
+# docker
 docker
 docker-compose
 nvidia-container-runtime
 
+# fonts
 noto-fonts
 ttf-dejavu
 ttf-liberation
-noto-fonts-emoji  
+noto-fonts-emoji

@@ -5,17 +5,14 @@ depends = ["shell", "gui"]
 depends = ["shell", "nvim"]
 
 [shell.files]
-zshrc = "~/.zshrc"
-alias = "~/.alias"
 pacdef = "~/.config/pacdef"
-nvim = "~/.config/nvim"
-kitty = "~/.config/kitty"
-ssh = "~/.ssh"
-"lazydocker.yml" = "~/.config/lazydocker/config.yml"
-"lazygit.yml" = "~/.config/lazygit/config.yml"
+"term/zshrc" = "~/.zshrc"
+"term/alias" = "~/.alias"
+"term/nvim" = "~/.config/nvim"
+"term/kitty" = "~/.config/kitty"
+"term/ssh" = "~/.ssh"
+"term/lazydocker.yml" = "~/.config/lazydocker.yml"
+"term/lazygit.yml" = "~/.config/lazygit.yml"
 
 [gui.files]
-wallpapers = "~/.config/wallpapers"
-
-[hyprland.files]
-hypr = "~/.config/hypr"
+"desktop/wallpapers" = "~/.config/desktop/wallpapers"
