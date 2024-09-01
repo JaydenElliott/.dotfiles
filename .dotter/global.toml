@@ -11,8 +11,9 @@ pacdef = "~/.config/pacdef"
 "term/nvim" = "~/.config/nvim"
 "term/kitty" = "~/.config/kitty"
 "term/ssh" = "~/.ssh"
-"term/lazydocker.yml" = "~/.config/lazydocker.yml"
-"term/lazygit.yml" = "~/.config/lazygit.yml"
+"term/lazydocker.yml" = "~/.config/lazydocker/config.yml"
+"term/lazygit.yml" = "~/.config/lazygit/config.yml"
+"term/dircolors" = "~/.dircolors"
 
 [gui.files]
 "desktop/wallpapers" = "~/.config/desktop/wallpapers"
