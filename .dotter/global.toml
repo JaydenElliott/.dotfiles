@@ -1,5 +1,5 @@
 [desktop]
-depends = ["shell", "gui"]
+depends = ["shell", "desktop"]
 
 [docker]
 depends = ["shell", "nvim"]
@@ -15,5 +15,6 @@ pacdef = "~/.config/pacdef"
 "term/lazygit.yml" = "~/.config/lazygit/config.yml"
 "term/dircolors" = "~/.dircolors"
 
-[gui.files]
+[desktop.files]
 "desktop/wallpapers" = "~/.config/desktop/wallpapers"
+"desktop/ulauncher.json" = "~/.config/ulauncher/settings.json"
