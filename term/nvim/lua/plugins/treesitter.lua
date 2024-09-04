@@ -24,6 +24,7 @@ return {
         'toml',
         'json',
         'toml',
+        'just'
       },
 
       sync_install = false,
