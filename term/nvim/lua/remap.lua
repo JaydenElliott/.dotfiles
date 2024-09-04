@@ -28,6 +28,7 @@ vim.keymap.set('n', '<C-o>', '<C-o>zz', { noremap = true })
 
 -- dont override paste
 vim.keymap.set('v', 'p', 'pgvy', { noremap = true })
+vim.keymap.set('n', 'P', '"0p', { noremap = true })
 
 -- save without format
 vim.api.nvim_create_user_command('W', 'noautocmd w', {})
