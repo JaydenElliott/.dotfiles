@@ -23,6 +23,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # docker
 sudo systemctl enable docker 
 sudo usermod -aG docker $USER
+sudo chmod 666 /var/run/docker.sock
 
 # load gnome config
 dconf load / < desktop/gconf-settings.ini
