@@ -21,8 +21,6 @@ jq
 
 # zsh
 zsh
-extra/zsh-completions
-zsh-autosuggestions
 
 # applications
 lnav

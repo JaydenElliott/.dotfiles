@@ -16,7 +16,6 @@ return {
         'rust',
         'wgsl',
         'tsx',
-        'typescript',
         'vimdoc',
         'vim',
         'sql',

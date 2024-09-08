@@ -9,12 +9,14 @@ pacdef = "~/.config/pacdef"
 "term/zshrc" = "~/.zshrc"
 "term/alias" = "~/.alias"
 "term/nvim" = "~/.config/nvim"
-"term/kitty" = "~/.config/kitty"
 "term/ssh" = "~/.ssh"
 "term/lazydocker.yml" = "~/.config/lazydocker/config.yml"
 "term/lazygit.yml" = "~/.config/lazygit/config.yml"
 "term/dircolors" = "~/.dircolors"
+"term/tealdeer.toml" = "~/.config/tealdeer/config.toml"
+"term/docker.json" = { target = "/etc/docker/daemon.json", owner = 0, type = "symbolic" }
 
 [desktop.files]
+"term/kitty" = "~/.config/kitty"
 "desktop/wallpapers" = "~/.config/desktop/wallpapers"
 "desktop/ulauncher.json" = "~/.config/ulauncher/settings.json"

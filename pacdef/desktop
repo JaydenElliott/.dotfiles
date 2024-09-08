@@ -6,6 +6,8 @@ gnome-browser-connector
 discord
 ticktick
 ulauncher
+vivaldi
+tradingview
 
 # gpu drivers
 nvidia
@@ -16,7 +18,7 @@ lib32-nvidia-utils
 # docker
 docker
 docker-compose
-nvidia-container-runtime
+nvidia-container-toolkit
 
 # fonts
 noto-fonts
