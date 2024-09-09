@@ -25,7 +25,8 @@ sudo systemctl enable docker
 sudo usermod -aG docker $USER
 sudo chmod 666 /var/run/docker.sock
 
-# load gnome config
+
+# load gnome config (save: `dconf dump / > desktop/dconf-settings.ini`)
 dconf load / < desktop/gconf-settings.ini
 
 

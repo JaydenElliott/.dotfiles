@@ -11,6 +11,7 @@ return {
         opts = {
           servers = {
             rust_analyzer = {
+              cargo = { features = "all" },
               procMacro = { enable = true },
               inlayHints = {
                 bindingModeHints = { enable = true },
