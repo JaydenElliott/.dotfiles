@@ -1,3 +1,3 @@
 #!/bin/bash
 source ~/.env
-kitty --session work
+VCG=$VCG VC=$VC kitty --session work

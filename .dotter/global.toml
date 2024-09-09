@@ -18,5 +18,6 @@ pacdef = "~/.config/pacdef"
 
 [desktop.files]
 "term/kitty" = "~/.config/kitty"
+"desktop/discord.json" = "~/.config/discord/settings.json"
 "desktop/wallpapers" = "~/.config/desktop/wallpapers"
 "desktop/ulauncher.json" = "~/.config/ulauncher/settings.json"
