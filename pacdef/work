@@ -1,3 +1,12 @@
 [arch]
 networkmanager-openvpn
 google-cloud-cli
+nasm
+clang
+gst-rtsp-server
+xorg-xhost
+
+# cp /opt/nvidia from container to /opt
+
+[rust]
+rerun-cli

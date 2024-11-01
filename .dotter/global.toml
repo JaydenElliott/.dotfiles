@@ -6,6 +6,8 @@ depends = ["shell", "nvim"]
 
 [shell.files]
 pacdef = "~/.config/pacdef"
+"term/.gitconfig" = "~/.gitconfig"
+"term/.gitconfig-visualcortex" = "~/.gitconfig-visualcortex"
 "term/zshrc" = "~/.zshrc"
 "term/alias" = "~/.alias"
 "term/nvim" = "~/.config/nvim"

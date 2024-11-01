@@ -1,0 +1,6 @@
+[user]
+	email = jayden.elliott@outlook.com
+	name = jaydenelliott
+  
+[includeIf "gitdir:~/visualcortex/"]
+  path = .gitconfig-visualcortex

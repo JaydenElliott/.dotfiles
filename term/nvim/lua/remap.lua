@@ -5,12 +5,6 @@ vim.keymap.set("n", "<C-w><C-j>", "<cmd>wincmd j<cr>", { noremap = true })
 vim.keymap.set("n", "<C-w><C-k>", "<cmd>wincmd k<cr>", { noremap = true })
 vim.keymap.set("n", "<C-w><C-l>", "<cmd>wincmd l<cr>", { noremap = true })
 
-
-
-
-
-
-
 -- if in two splits run ``:windo diffthis`` to compare files
 
 -- diagnostics
