@@ -1,19 +1,17 @@
 [arch]
-# applications
+# development
 kitty
+tableplus
+
+
+# gnome app replacements
+kooha
+nemo 
+
+# gnome things
 gnome-tweaks
 gnome-browser-connector
-discord
-ticktick
-ulauncher
-vivaldi
-tradingview
-obsidian
-spotify
-insomnia
-vlc
-tableplus
-kazam
+
 
 # gpu drivers
 nvidia
@@ -31,3 +29,14 @@ noto-fonts
 ttf-dejavu
 ttf-liberation
 noto-fonts-emoji
+
+# other applications
+vivaldi
+discord
+ticktick
+ulauncher
+tradingview
+obsidian
+spotify
+insomnia
+vlc
