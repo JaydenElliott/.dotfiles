@@ -1,38 +1,60 @@
-vim.keymap.set("n", "<C-w><C-s>", vim.cmd.split, { noremap = true })
-vim.keymap.set("n", "<C-w><C-v>", vim.cmd.vsplit, { noremap = true })
-vim.keymap.set("n", "<C-w><C-k>", "<cmd>wincmd k<cr>", { noremap = true })
-vim.keymap.set("n", "<C-w><C-j>", "<cmd>wincmd j<cr>", { noremap = true })
-vim.keymap.set("n", "<C-w><C-k>", "<cmd>wincmd k<cr>", { noremap = true })
-vim.keymap.set("n", "<C-w><C-l>", "<cmd>wincmd l<cr>", { noremap = true })
+-- Window management
+local window_maps = {
+  ["<C-w><C-s>"] = vim.cmd.split,
+  ["<C-w><C-v>"] = vim.cmd.vsplit,
+  ["<C-w><C-h>"] = "<cmd>wincmd h<cr>",
+  ["<C-w><C-j>"] = "<cmd>wincmd j<cr>",
+  ["<C-w><C-k>"] = "<cmd>wincmd k<cr>",
+  ["<C-w><C-l>"] = "<cmd>wincmd l<cr>",
+}
 
--- if in two splits run ``:windo diffthis`` to compare files
 
--- diagnostics
-vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+-- Diagnostic navigation
+local diagnostic_maps = {
+  ["<leader>dp"] = { function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Go to previous error' } },
+  ["<leader>dn"] = { function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Go to next error' } },
+  ["<leader>do"] = { vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' } },
+}
 
--- cursor stays in the center of the screen during these commands
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
-vim.keymap.set('n', 'n', 'nzz', { noremap = true })
-vim.keymap.set('n', '<C-i>', '<C-i>zz', { noremap = true })
-vim.keymap.set('n', '<C-o>', '<C-o>zz', { noremap = true })
+-- Center cursor during movement
+local center_cursor_maps = {
+  ["J"] = "mzJ`z",
+  ["<C-d>"] = "<C-d>zz",
+  ["<C-u>"] = "<C-u>zz",
+  ["n"] = "nzz",
+  ["<C-i>"] = "<C-i>zz",
+  ["<C-o>"] = "<C-o>zz",
+}
 
--- dont override paste
-vim.keymap.set('v', 'p', 'pgvy', { noremap = true })
---vim.keymap.set('n', 'P', '"0p', { noremap = true })
+-- Apply window mappings
+for lhs, rhs in pairs(window_maps) do
+  vim.keymap.set("n", lhs, rhs, { noremap = true })
+end
 
--- save without format
+-- Apply diagnostic mappings
+for lhs, mapping in pairs(diagnostic_maps) do
+  local rhs, opts = mapping[1], mapping[2]
+  vim.keymap.set("n", lhs, rhs, opts)
+end
+
+-- Apply center cursor mappings
+for lhs, rhs in pairs(center_cursor_maps) do
+  vim.keymap.set("n", lhs, rhs, { noremap = true })
+end
+
+-- Other mappings
+
+-- Save without Formatting
 vim.api.nvim_create_user_command('W', 'noautocmd w', {})
 
--- format without saving
+-- Format without saving
 vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format() end, {})
 
+-- Dont override paste
+vim.keymap.set('v', 'p', 'pgvy', { noremap = true })
 
--- generate uuid
-vim.keymap.set("n", "<leader>u", "i\"<C-r>=system('uuidgen')[:-2]<CR>\",<Esc>")
+-- Generate UUID
+vim.keymap.set("n", "<leader>u", 'i"<C-r>=system("uuidgen")[:-2]<CR>",<Esc>')
 
--- git diff
+-- Diff
 vim.api.nvim_create_user_command('Diff', 'DiffviewOpen', {})

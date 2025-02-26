@@ -19,6 +19,7 @@ return {
                 closureReturnTypeHints = { enable = true },
                 expressionAdjustmentHints = { enable = true }
               },
+              diagnostics = { enable = true },
             },
             wgsl_analyzer = {},
             clangd = {},
