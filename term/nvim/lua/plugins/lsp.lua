@@ -2,13 +2,14 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'williamboman/mason.nvim',      config = true },
+      { 'williamboman/mason.nvim', config = true },
       { 'hrsh7th/nvim-cmp' },
-      { 'lvimuser/lsp-inlayhints.nvim', config = true },
+      --{ 'lvimuser/lsp-inlayhints.nvim', config = true },
       {
         'williamboman/mason-lspconfig.nvim',
 
         opts = {
+          inlay_hints = { enabled = true },
           servers = {
             rust_analyzer = {
               cargo = { features = "all" },
@@ -41,7 +42,11 @@ return {
 
           local on_attach = function(client, bufnr)
             vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-            require("lsp-inlayhints").on_attach(client, bufnr)
+
+            --require("lsp-inlayhints").on_attach(client, bufnr)
+            if vim.lsp.inlay_hint then
+              vim.lsp.inlay_hint.enable(true, { 0 })
+            end
 
             vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = '[G]oto [A]ction', buffer = bufnr })
             vim.keymap.set('n', '<leader>rw', vim.lsp.buf.rename, { desc = '[R]ename [W]ord', buffer = bufnr })
