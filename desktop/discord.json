@@ -3,13 +3,13 @@
   "IS_MAXIMIZED": true,
   "IS_MINIMIZED": false,
   "WINDOW_BOUNDS": {
-    "x": 231,
-    "y": 37,
-    "width": 940,
-    "height": 507
+    "x": 431,
+    "y": 188,
+    "width": 1035,
+    "height": 696
   },
   "MINIMIZE_TO_TRAY": false,
   "OPEN_ON_STARTUP": false,
   "SKIP_HOST_UPDATE": true,
-  "BACKGROUND_COLOR": "#2b2d31"
+  "BACKGROUND_COLOR": "#2c2d32"
 }

@@ -1,95 +1,78 @@
 return {
+  { 'neovim/nvim-lspconfig', },
+  { "mason-org/mason.nvim",  opts = {} },
+  --{
+  --'saghen/blink.cmp',
+  --dependencies = { 'rafamadriz/friendly-snippets' },
+  --version = '1.*',
+  --opts = {
+  --sources = {
+  --default = { 'lsp', 'path', 'snippets', 'buffer' },
+  --},
+  --opts_extend = { "sources.default" }
+  --}
+  --},
   {
-    'neovim/nvim-lspconfig',
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      { 'williamboman/mason.nvim', config = true },
+      "neovim/nvim-lspconfig",
+      "mason-org/mason.nvim",
+      --'saghen/blink.cmp'
       { 'hrsh7th/nvim-cmp' },
-      --{ 'lvimuser/lsp-inlayhints.nvim', config = true },
-      {
-        'williamboman/mason-lspconfig.nvim',
-
-        opts = {
-          inlay_hints = { enabled = true },
-          servers = {
-            rust_analyzer = {
-              cargo = { features = "all" },
-              procMacro = { enable = true },
-              inlayHints = {
-                bindingModeHints = { enable = true },
-                closureCaptureHints = { enable = true },
-                closureReturnTypeHints = { enable = true },
-                expressionAdjustmentHints = { enable = true }
-              },
-              diagnostics = { enable = true },
-            },
-            wgsl_analyzer = {},
-            clangd = {},
-            bashls = {},
-            lua_ls = {
-              Lua = {
-                format = {
-                  enable = true
-                }
-              }
-            },
-            jsonls = {},
-            pyright = {},
-            taplo = {},
+    },
+    opts = {
+      servers = {
+        rust_analyzer = {
+          cargo = { features = "all" },
+          procMacro = { enable = true },
+          inlayHints = {
+            bindingModeHints = { enable = true },
+            closureCaptureHints = { enable = true },
+            closureReturnTypeHints = { enable = true },
+            expressionAdjustmentHints = { enable = true }
           },
+          diagnostics = { enable = true },
         },
-        config = function(_, opts)
-          -- keymaps must be set once lsp is running
-
-          local on_attach = function(client, bufnr)
-            vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
-            --require("lsp-inlayhints").on_attach(client, bufnr)
-            if vim.lsp.inlay_hint then
-              vim.lsp.inlay_hint.enable(true, { 0 })
-            end
-
-            vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = '[G]oto [A]ction', buffer = bufnr })
-            vim.keymap.set('n', '<leader>rw', vim.lsp.buf.rename, { desc = '[R]ename [W]ord', buffer = bufnr })
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation', buffer = bufnr })
-
-
-            ---- Go to
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition', buffer = bufnr })
-            vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
-              { desc = '[G]oto [D]efinition', buffer = bufnr })
-
-            vim.keymap.set('n', '<leader>kd', vim.lsp.buf.signature_help,
-              { desc = 'Signature Documentation', buffer = bufnr })
-          end
-
-
-          -- setup language servers and cmps
-
-          local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            require("cmp_nvim_lsp").default_capabilities()
-          )
-
-          local mason_lspconfig = require('mason-lspconfig')
-          mason_lspconfig.setup {
-            ensure_installed = vim.tbl_keys(opts.servers),
+        wgsl_analyzer = {},
+        clangd = {},
+        bashls = {},
+        lua_ls = {
+          Lua = {
+            format = {
+              enable = true
+            }
           }
-          mason_lspconfig.setup_handlers {
-            function(server_name)
-              require('lspconfig')[server_name].setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = opts.servers[server_name],
-                filetypes = (opts.servers[server_name] or {}).filetypes,
-              }
-            end,
-          }
-        end
+        },
+        jsonls = {},
+        pyright = {},
+        taplo = {},
       },
     },
+    config = function(_, opts)
+      local lspconfig = require('lspconfig')
+      local on_attach = function(client, bufnr)
+        vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+        --require("lsp-inlayhints").on_attach(client, bufnr)
+        if vim.lsp.inlay_hint then
+          vim.lsp.inlay_hint.enable(true, { 0 })
+        end
+      end
+
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        require("cmp_nvim_lsp").default_capabilities()
+      )
+      for server, config in pairs(opts.servers) do
+        config.capabilities = capabilities
+        config.on_attach = on_attach
+        lspconfig[server].setup(config)
+      end
+    end
   },
+
   {
     'hrsh7th/nvim-cmp',
     dependencies = {

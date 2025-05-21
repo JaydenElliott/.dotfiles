@@ -58,3 +58,17 @@ vim.keymap.set("n", "<leader>u", 'i"<C-r>=system("uuidgen")[:-2]<CR>",<Esc>')
 
 -- Diff
 vim.api.nvim_create_user_command('Diff', 'DiffviewOpen', {})
+
+
+vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = '[G]oto [A]ction', })
+vim.keymap.set('n', '<leader>rw', vim.lsp.buf.rename, { desc = '[R]ename [W]ord', })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation', })
+
+
+---- Go to
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition', })
+vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
+  { desc = '[G]oto [D]efinition', })
+
+vim.keymap.set('n', '<leader>kd', vim.lsp.buf.signature_help,
+  { desc = 'Signature Documentation', })
