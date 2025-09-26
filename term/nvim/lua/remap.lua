@@ -13,6 +13,8 @@ local window_maps = {
 local diagnostic_maps = {
   ["<leader>dp"] = { function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Go to previous error' } },
   ["<leader>dn"] = { function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Go to next error' } },
+  ["]q"] = { function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Go to next error' } },
+  ["[q"] = { function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Go to previous error' } },
   ["<leader>do"] = { vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' } },
 }
 
@@ -24,6 +26,8 @@ local center_cursor_maps = {
   ["n"] = "nzz",
   ["<C-i>"] = "<C-i>zz",
   ["<C-o>"] = "<C-o>zz",
+  ["*"] = "*zz",
+  ["#"] = "#zz"
 }
 
 -- Apply window mappings

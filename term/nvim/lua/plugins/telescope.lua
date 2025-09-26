@@ -44,6 +44,16 @@ return {
       local telescope = require('telescope')
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
       telescope.setup({
+        --defaults = {
+        --path_display = { "smart" },
+        --},
+        pickers = {
+          lsp_references = {
+            show_line = false,            -- Don't show the line content in the results
+            include_declaration = false,  -- Don't include the declaration
+            include_current_line = false, -- Don't include current cursor position
+          }
+        },
         extensions = {
           live_grep_args = {
             auto_quoting = true,
