@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
 vim.opt.hlsearch = false
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
@@ -22,6 +21,89 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 
+local general_keymaps = {
+  -- Window management
+  { "<C-w><C-s>", vim.cmd.split,                               desc = "Split horizontal" },
+  { "<C-w><C-v>", vim.cmd.vsplit,                              desc = "Split vertical" },
+  { "<C-w><C-h>", "<cmd>wincmd h<cr>",                         desc = "Go to left window" },
+  { "<C-w><C-j>", "<cmd>wincmd j<cr>",                         desc = "Go to window below" },
+  { "<C-w><C-k>", "<cmd>wincmd k<cr>",                         desc = "Go to window above" },
+  { "<C-w><C-l>", "<cmd>wincmd l<cr>",                         desc = "Go to right window" },
+
+  -- Center cursor
+  { "J",          "mzJ`z",                                     desc = "Join lines and restore cursor" },
+  { "<C-d>",      "<C-d>zz",                                   desc = "Scroll down half page and center" },
+  { "<C-u>",      "<C-u>zz",                                   desc = "Scroll up half page and center" },
+  { "n",          "nzz",                                       desc = "Next search result and center" },
+  { "<C-i>",      "<C-i>zz",                                   desc = "Jump forward and center" },
+  { "<C-o>",      "<C-o>zz",                                   desc = "Jump back and center" },
+  { "*",          "*zz",                                       desc = "Search word under cursor and center" },
+  { "#",          "#zz",                                       desc = "Search word under cursor backwards and center" },
+
+
+  -- Other
+  { "p",          "pgvy",                                      mode = "v",                                            desc = "Paste without overriding register" },
+  { "<leader>u",  'i"<C-r>=system("uuidgen")[:-2]<CR>",<Esc>', desc = "Generate UUID" },
+}
+
+local plugin_keymaps = {
+  -- which-key
+  { "<leader>?",  function() require("which-key").show({ global = false }) end, desc = "Buffer Local Keymaps (which-key)", },
+
+  -- harpoon
+  { "<C-q>",      function() require('harpoon.ui').nav_prev() end,              desc = "Go to previous harpoon mark" },
+  { "<C-p>",      function() require('harpoon.ui').nav_next() end,              desc = "Go to next harpoon mark" },
+  { "<C-t>",      function() require('harpoon.ui').toggle_quick_menu() end,     desc = "Show harpoon marks" },
+  { "<leader>p",  function() require('harpoon.mark').add_file() end,            desc = "Mark file with harpoon" },
+
+  -- vim-kitty-navigator
+  { "<C-w>h",     "<cmd>KittyNavigateLeft<cr>",                                 desc = "Navigate to left pane (Kitty)" },
+  { "<C-w>j",     "<cmd>KittyNavigateDown<cr>",                                 desc = "Navigate to pane below (Kitty)" },
+  { "<C-w>k",     "<cmd>KittyNavigateUp<cr>",                                   desc = "Navigate to pane above (Kitty)" },
+  { "<C-w>l",     "<cmd>KittyNavigateRight<cr>",                                desc = "Navigate to right pane (Kitty)" },
+
+  -- neotree
+  { "\\",         "<cmd>Neotree reveal left<cr>",                               desc = "Toggle Neo-tree" },
+
+  -- telescope
+  { "<leader>ff", "<cmd>Telescope find_files<cr>",                              desc = "Find Files" },
+  { "<leader>fF", "<cmd>Telescope search_dir_picker<cr>",                       desc = "Find dir then grep" },
+  { "<leader>fh", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",   desc = "Find Hidden" },
+  { "<leader>fw", "<cmd>Telescope grep_string<cr>",                             desc = "Find current Word" },
+  { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",                          desc = "Find by Grep" },
+  { "<leader>fu", "<cmd>Telescope undo<cr>",                                    desc = "Find Undo" },
+  { "<leader>df", "<cmd>Telescope diagnostics<cr>",                             desc = "Diagnostics find by File" },
+  { "gr",         "<cmd>Telescope lsp_references<cr>",                          desc = "Goto References" },
+  { "<C-r>",      function() require('telescope.builtin').resume() end,         mode = "i",                                desc = "Resume previous search" },
+  {
+    "<leader>f/",
+    function()
+      require('telescope.builtin').current_buffer_fuzzy_find(
+        require('telescope.themes').get_dropdown({ winblend = 10, previewer = false })
+      )
+    end,
+    desc = "Fuzzily search in current buffer"
+  },
+}
+
+
+local lsp_keymaps = {
+  -- diagnostics
+  { "<leader>dp", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, desc = "Go to previous error" },
+  { "<leader>dn", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, desc = "Go to next error" },
+  { "]q",         function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, desc = "Go to next error" },
+  { "[q",         function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, desc = "Go to previous error" },
+  { "<leader>do", vim.diagnostic.open_float,                                                             desc = "Open floating diagnostic message" },
+
+  -- lsp
+  { "ga",         vim.lsp.buf.code_action,                                                               desc = "Goto Action" },
+  { "<leader>rw", vim.lsp.buf.rename,                                                                    desc = "Rename Word" },
+  { "K",          vim.lsp.buf.hover,                                                                     desc = "Hover Documentation" },
+  { "gd",         vim.lsp.buf.definition,                                                                desc = "Goto Definition" },
+  { "<leader>kd", vim.lsp.buf.signature_help,                                                            desc = "Signature Documentation" },
+}
+
+
 -- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -38,6 +120,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
   {
+
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      config = function()
+        local wk = require("which-key")
+        wk.add(general_keymaps)
+        wk.add(plugin_keymaps)
+      end,
+    },
     {
       'windwp/nvim-autopairs',
       event = "InsertEnter",
@@ -73,22 +165,10 @@ require("lazy").setup(
     },
     {
       'theprimeagen/harpoon',
-      keys = {
-        { "<C-q>",     function() require('harpoon.ui').nav_prev() end,          desc = "Go to previous harpoon mark" },
-        { "<C-p>",     function() require('harpoon.ui').nav_next() end,          desc = "Go to next harpoon mark" },
-        { "<C-t>",     function() require('harpoon.ui').toggle_quick_menu() end, desc = "Show harpoon marks" },
-        { "<leader>p", function() require('harpoon.mark').add_file() end,        desc = "Mark file with harpoon" },
-      }
     },
     {
       "knubie/vim-kitty-navigator",
       cmd = { "KittyNavigateRight", "KittyNavigateUp", "KittyNavigateDown", "KittyNavigateLeft", },
-      keys = {
-        { "<C-w>h", "<cmd>KittyNavigateLeft<cr>", },
-        { "<C-w>j", "<cmd>KittyNavigateDown<cr>", },
-        { "<C-w>k", "<cmd>KittyNavigateUp<cr>", },
-        { "<C-w>l", "<cmd>KittyNavigateRight<cr>", },
-      },
       config = function()
         vim.g.kitty_navigator_no_mappings = 1
       end,
@@ -97,7 +177,6 @@ require("lazy").setup(
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
       dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim" },
-      keys = { { "\\", "<cmd>Neotree reveal left<cr>" } },
       init = function()
         vim.api.nvim_create_augroup("neotree_start", { clear = true })
         vim.api.nvim_create_autocmd("BufEnter", {
@@ -166,31 +245,6 @@ require("lazy").setup(
         "nvim-telescope/telescope-live-grep-args.nvim",
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       },
-      keys = {
-        { "<leader>ff", "<cmd>Telescope find_files<cr>",                            desc = "[F]ind [F]iles" },
-        { "<leader>fF", "<cmd>Telescope search_dir_picker<cr>",                     desc = "[F]ind dir then grep" },
-        { "<leader>fh", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", desc = "[F]ind [H]idden" },
-        { "<leader>fw", "<cmd>Telescope grep_string<cr>",                           desc = "[F]ind current [W]ord" },
-        { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",                        desc = "[F]ind by [G]rep" },
-        { "<leader>fu", "<cmd>Telescope undo<cr>",                                  desc = "[F]ind [U]ndo" },
-        { "<leader>df", "<cmd>Telescope diagnostics<cr>",                           desc = "[D]iagnostics find by [F]ile" },
-        { "gr",         "<cmd>Telescope lsp_references<cr>",                        desc = "[G]oto [R]eferences" },
-        {
-          "<C-r>",
-          function() require('telescope.builtin').resume() end,
-          mode = "i",
-          desc = "Resume previous search"
-        },
-        {
-          "<leader>f/",
-          function()
-            require('telescope.builtin').current_buffer_fuzzy_find(
-              require('telescope.themes').get_dropdown({ winblend = 10, previewer = false })
-            )
-          end,
-          desc = '[/] Fuzzily search in current buffer'
-        },
-      },
       config = function()
         local telescope = require('telescope')
         local lga_actions = require("telescope-live-grep-args.actions")
@@ -242,7 +296,12 @@ require("lazy").setup(
         indent = { enable = true },
       }
     },
-    { "mason-org/mason.nvim", config = true },
+    {
+      "mason-org/mason.nvim",
+      opts = {
+        ensure_installed = { "stylua" }
+      }
+    },
     { "neovim/nvim-lspconfig" },
     {
       "mason-org/mason-lspconfig.nvim",
@@ -276,7 +335,18 @@ require("lazy").setup(
       config = function(_, opts)
         local lspconfig = require('lspconfig')
 
-        local on_attach = function(_, _)
+        local on_attach = function(_, bufnr)
+          -- Register LSP keymaps for this buffer only
+          local wk = require("which-key")
+          local keymaps = vim.deepcopy(lsp_keymaps)
+
+          -- Add buffer to each keymap
+          for _, keymap in ipairs(keymaps) do
+            keymap.buffer = bufnr
+          end
+
+          wk.add(keymaps)
+
           vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
           if vim.lsp.inlay_hint then
             vim.lsp.inlay_hint.enable(true, { 0 })
@@ -362,46 +432,7 @@ require("lazy").setup(
 )
 
 
--- Window management
-vim.keymap.set("n", "<C-w><C-s>", vim.cmd.split, { noremap = true })
-vim.keymap.set("n", "<C-w><C-v>", vim.cmd.vsplit, { noremap = true })
-vim.keymap.set("n", "<C-w><C-h>", "<cmd>wincmd h<cr>", { noremap = true })
-vim.keymap.set("n", "<C-w><C-j>", "<cmd>wincmd j<cr>", { noremap = true })
-vim.keymap.set("n", "<C-w><C-k>", "<cmd>wincmd k<cr>", { noremap = true })
-vim.keymap.set("n", "<C-w><C-l>", "<cmd>wincmd l<cr>", { noremap = true })
-
--- Diagnostic navigation
-vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
-  { desc = 'Go to previous error' })
-vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end,
-  { desc = 'Go to next error' })
-vim.keymap.set("n", "]q", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end,
-  { desc = 'Go to next error' })
-vim.keymap.set("n", "[q", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
-  { desc = 'Go to previous error' })
-vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-
--- Center cursor during movement
-vim.keymap.set("n", "J", "mzJ`z", { noremap = true })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
-vim.keymap.set("n", "n", "nzz", { noremap = true })
-vim.keymap.set("n", "<C-i>", "<C-i>zz", { noremap = true })
-vim.keymap.set("n", "<C-o>", "<C-o>zz", { noremap = true })
-vim.keymap.set("n", "*", "*zz", { noremap = true })
-vim.keymap.set("n", "#", "#zz", { noremap = true })
-
--- LSP
-vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = '[G]oto [A]ction', })
-vim.keymap.set('n', '<leader>rw', vim.lsp.buf.rename, { desc = '[R]ename [W]ord', })
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation', })
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition', })
-vim.keymap.set('n', '<leader>kd', vim.lsp.buf.signature_help, { desc = 'Signature Documentation', })
-
-
--- Other keympaps
+-- custom commands
 vim.api.nvim_create_user_command('W', 'noautocmd w', {})                            -- save without formatting
 vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format() end, {}) -- format without saving
-vim.keymap.set('v', 'p', 'pgvy', { noremap = true })                                -- dont override paste
-vim.keymap.set("n", "<leader>u", 'i"<C-r>=system("uuidgen")[:-2]<CR>",<Esc>')       -- generate UUID
 vim.api.nvim_create_user_command('Diff', 'DiffviewOpen', {})                        -- git diff
