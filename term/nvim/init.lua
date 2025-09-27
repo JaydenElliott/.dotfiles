@@ -174,6 +174,7 @@ require("lazy").setup(
         { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",                        desc = "[F]ind by [G]rep" },
         { "<leader>fu", "<cmd>Telescope undo<cr>",                                  desc = "[F]ind [U]ndo" },
         { "<leader>df", "<cmd>Telescope diagnostics<cr>",                           desc = "[D]iagnostics find by [F]ile" },
+        { "gr",         "<cmd>Telescope lsp_references<cr>",                        desc = "[G]oto [R]eferences" },
         {
           "<C-r>",
           function() require('telescope.builtin').resume() end,
@@ -236,7 +237,7 @@ require("lazy").setup(
         },
         highlight = {
           enable = true,
-          --additional_vim_regex_highlighting = false,
+          additional_vim_regex_highlighting = false,
         },
         indent = { enable = true },
       }
@@ -395,7 +396,6 @@ vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = '[G]oto [A]ction', }
 vim.keymap.set('n', '<leader>rw', vim.lsp.buf.rename, { desc = '[R]ename [W]ord', })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation', })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition', })
-vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]oto [D]efinition', })
 vim.keymap.set('n', '<leader>kd', vim.lsp.buf.signature_help, { desc = 'Signature Documentation', })
 
 
