@@ -40,6 +40,9 @@ local general_keymaps = {
   { "*",          "*zz",                                       desc = "Search word under cursor and center" },
   { "#",          "#zz",                                       desc = "Search word under cursor backwards and center" },
 
+  -- quickfix
+  { "<leader>[",  "<cmd>cprev<cr>",                            desc = "Previous quickfix item" },
+  { "<leader>]",  "<cmd>cnext<cr>",                            desc = "Next quickfix item" },
 
   -- Other
   { "p",          "pgvy",                                      mode = "v",                                            desc = "Paste without overriding register" },
@@ -51,7 +54,7 @@ local plugin_keymaps = {
   { "<C-q>",      function() require('harpoon.ui').nav_prev() end,            desc = "Go to previous harpoon mark" },
   { "<C-p>",      function() require('harpoon.ui').nav_next() end,            desc = "Go to next harpoon mark" },
   { "<C-t>",      function() require('harpoon.ui').toggle_quick_menu() end,   desc = "Show harpoon marks" },
-  { "<leader>p",  function() require('harpoon.mark').add_file() end,          desc = "Mark file with harpoon" },
+  { "<leader>a",  function() require('harpoon.mark').add_file() end,          desc = "Mark file with harpoon" },
 
   -- vim-kitty-navigator
   { "<C-w>h",     "<cmd>KittyNavigateLeft<cr>",                               desc = "Navigate to left pane (Kitty)" },
@@ -97,7 +100,6 @@ local lsp_keymaps = {
   { "<leader>rw", vim.lsp.buf.rename,                                                                    desc = "Rename Word" },
   { "K",          vim.lsp.buf.hover,                                                                     desc = "Hover Documentation" },
   { "gd",         vim.lsp.buf.definition,                                                                desc = "Goto Definition" },
-  { "<leader>kd", vim.lsp.buf.signature_help,                                                            desc = "Signature Documentation" },
 }
 
 -- key bindings helper
