@@ -302,8 +302,8 @@ require("lazy").setup(
       dependencies = { "neovim/nvim-lspconfig", "mason-org/mason.nvim", "hrsh7th/nvim-cmp" },
       opts = {
         ensure_installed = {
-          "lua_ls",
           "rust_analyzer",
+          "lua_ls",
           "clangd",
           "bashls",
           "jsonls",
@@ -324,6 +324,11 @@ require("lazy").setup(
             diagnostics = { enable = true },
           },
           lua_ls = { Lua = { format = { enable = true } } },
+          clangd = {},
+          bashls = {},
+          jsonls = {},
+          pyright = {},
+          taplo = {},
         },
       },
       config = function(_, opts)
