@@ -295,12 +295,7 @@ require("lazy").setup(
         indent = { enable = true },
       }
     },
-    {
-      "mason-org/mason.nvim",
-      opts = {
-        ensure_installed = { "stylua" }
-      }
-    },
+    { "mason-org/mason.nvim", config = true },
     { "neovim/nvim-lspconfig" },
     {
       "mason-org/mason-lspconfig.nvim",
@@ -333,6 +328,7 @@ require("lazy").setup(
       },
       config = function(_, opts)
         local lspconfig = require('lspconfig')
+
 
         local on_attach = function(_, bufnr)
           set_keymaps(lsp_keymaps, bufnr)
