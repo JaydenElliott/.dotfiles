@@ -281,22 +281,39 @@ require("lazy").setup(
         telescope.load_extension('undo')
       end
     },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    main = 'nvim-treesitter.configs',
+    opts = {
+      ensure_installed = {
+        'c',
+        'cpp',
+        'go',
+        'lua',
+        'python',
+        'rust',
+        'wgsl',
+        'tsx',
+        'vimdoc',
+        'vim',
+        'sql',
+        'bash',
+        'toml',
+        'json',
+        'toml'
+      },
 
-    {
-      'nvim-treesitter/nvim-treesitter',
-      build = ':TSUpdate',
-      opts = {
-        ensure_installed = {
-          'bash', 'c', 'cpp', 'go', 'json', 'just', 'lua',
-          'python', 'rust', 'sql', 'toml', 'tsx', 'vim', 'vimdoc', 'wgsl'
-        },
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-        indent = { enable = true },
-      }
-    },
+      sync_install = true,
+      auto_install = true,
+
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      indent = { enable = true },
+    }
+  },
     { "mason-org/mason.nvim", config = true },
     { "neovim/nvim-lspconfig" },
     {
