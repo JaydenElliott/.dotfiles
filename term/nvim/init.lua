@@ -342,7 +342,14 @@ require("lazy").setup(
             },
             diagnostics = { enable = true },
           },
-          lua_ls = { Lua = { format = { enable = true } } },
+          lua_ls = {
+            settings = {
+              Lua = {
+                format = { enable = true },
+                hint = { enable = false },
+              }
+            }
+          },
           clangd = {},
           bashls = {},
           jsonls = {},
