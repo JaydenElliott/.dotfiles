@@ -281,39 +281,39 @@ require("lazy").setup(
         telescope.load_extension('undo')
       end
     },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    main = 'nvim-treesitter.configs',
-    opts = {
-      ensure_installed = {
-        'c',
-        'cpp',
-        'go',
-        'lua',
-        'python',
-        'rust',
-        'wgsl',
-        'tsx',
-        'vimdoc',
-        'vim',
-        'sql',
-        'bash',
-        'toml',
-        'json',
-        'toml'
-      },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      build = ':TSUpdate',
+      main = 'nvim-treesitter.configs',
+      opts = {
+        ensure_installed = {
+          'c',
+          'cpp',
+          'go',
+          'lua',
+          'python',
+          'rust',
+          'wgsl',
+          'tsx',
+          'vimdoc',
+          'vim',
+          'sql',
+          'bash',
+          'toml',
+          'json',
+          'toml'
+        },
 
-      sync_install = true,
-      auto_install = true,
+        sync_install = true,
+        auto_install = true,
 
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-      },
-      indent = { enable = true },
-    }
-  },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+        indent = { enable = true },
+      }
+    },
     { "mason-org/mason.nvim", config = true },
     { "neovim/nvim-lspconfig" },
     {
@@ -351,9 +351,6 @@ require("lazy").setup(
         },
       },
       config = function(_, opts)
-        local lspconfig = require('lspconfig')
-
-
         local on_attach = function(_, bufnr)
           set_keymaps(lsp_keymaps, bufnr)
 
@@ -373,7 +370,8 @@ require("lazy").setup(
         for server, config in pairs(opts.servers) do
           config.capabilities = capabilities
           config.on_attach = on_attach
-          lspconfig[server].setup(config)
+          vim.lsp.config[server] = config
+          vim.lsp.enable(server)
         end
       end
     },
