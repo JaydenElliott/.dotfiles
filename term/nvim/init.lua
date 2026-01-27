@@ -301,7 +301,9 @@ require("lazy").setup(
           'bash',
           'toml',
           'json',
-          'toml'
+          'toml',
+          "make",
+          "dockerfile"
         },
 
         sync_install = true,
@@ -310,6 +312,7 @@ require("lazy").setup(
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
+          disable = { "make", "dockerfile" }, -- required as `)` character in Makefile causes bug with treesitter
         },
         indent = { enable = true },
       }
