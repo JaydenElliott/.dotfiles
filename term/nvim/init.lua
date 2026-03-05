@@ -237,7 +237,6 @@ require("lazy").setup(
     },
     {
       'nvim-telescope/telescope.nvim',
-      branch = '0.1.x',
       dependencies = {
         'nvim-lua/plenary.nvim',
         "nvim-telescope/telescope-file-browser.nvim",
@@ -284,7 +283,7 @@ require("lazy").setup(
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
-      main = 'nvim-treesitter.configs',
+      main = 'nvim-treesitter.config',
       opts = {
         ensure_installed = {
           'c',
