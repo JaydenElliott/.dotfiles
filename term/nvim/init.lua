@@ -174,6 +174,17 @@ require("lazy").setup(
         vim.g.kitty_navigator_no_mappings = 1
       end,
     },
+  {
+    'mikesmithgh/kitty-scrollback.nvim',
+    enabled = true,
+    lazy = true,
+    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
+    event = { 'User KittyScrollbackLaunch' },
+     version = '*', -- latest stable version, may have breaking changes if major version changed
+    config = function()
+      require('kitty-scrollback').setup()
+    end,
+  },
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
