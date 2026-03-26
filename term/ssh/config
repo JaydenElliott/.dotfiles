@@ -3,4 +3,8 @@ Include config.d/work
 AddKeysToAgent yes
 
 Host github.com
-    IdentityFile ~/.ssh/personal/github
+    IdentityFile ~/.ssh/github
+    
+Host gitlab.com
+    IdentityFile ~/.ssh/gitlab
+
