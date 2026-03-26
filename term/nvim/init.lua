@@ -174,17 +174,17 @@ require("lazy").setup(
         vim.g.kitty_navigator_no_mappings = 1
       end,
     },
-  {
-    'mikesmithgh/kitty-scrollback.nvim',
-    enabled = true,
-    lazy = true,
-    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
-    event = { 'User KittyScrollbackLaunch' },
-     version = '*', -- latest stable version, may have breaking changes if major version changed
-    config = function()
-      require('kitty-scrollback').setup()
-    end,
-  },
+    {
+      'mikesmithgh/kitty-scrollback.nvim',
+      enabled = true,
+      lazy = true,
+      cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
+      event = { 'User KittyScrollbackLaunch' },
+      version = '*', -- latest stable version, may have breaking changes if major version changed
+      config = function()
+        require('kitty-scrollback').setup()
+      end,
+    },
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
@@ -337,10 +337,8 @@ require("lazy").setup(
           "rust_analyzer",
           "lua_ls",
           "clangd",
-          "bashls",
           "jsonls",
-          "pyright",
-          "taplo"
+          "pyright"
         },
 
         servers = {
@@ -364,13 +362,13 @@ require("lazy").setup(
             }
           },
           clangd = {},
-          bashls = {},
           jsonls = {},
-          pyright = {},
-          taplo = {},
+          pyright = {}
         },
       },
       config = function(_, opts)
+        require('mason-lspconfig').setup({ ensure_installed = opts.ensure_installed })
+
         local on_attach = function(_, bufnr)
           set_keymaps(lsp_keymaps, bufnr)
 

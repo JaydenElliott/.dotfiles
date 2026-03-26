@@ -23,7 +23,9 @@
       ]
     },
     "1": {
-      "left": [],
+      "left": [
+        "workspaces"
+      ],
       "middle": [],
       "right": []
     },
