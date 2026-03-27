@@ -271,6 +271,7 @@ require("lazy").setup(
             }
           },
           extensions = {
+            fzf = {},
             live_grep_args = {
               auto_quoting = true,
               mappings = {
