@@ -11,7 +11,7 @@
 
 /* ── Global ── */
 * {
-    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 0.7rem;
 }
 
@@ -45,6 +45,10 @@ button {
     color: @overlay0;
     border-bottom: 2px solid transparent;
     transition: all 0.2s ease;
+}
+
+#workspaces button:not(.empty) {
+    color: @text;
 }
 
 #workspaces button.active {

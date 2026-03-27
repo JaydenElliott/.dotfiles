@@ -1,3 +1,4 @@
+# clipboard
 ```
 sudo pacman -S cliphist
 ```
@@ -18,8 +19,9 @@ yay -S \
   htop \
   neovim \
   gcc \
-  man-db \
   cmake \
+  npm \
+  man-db \
   fd \
   ripgrep \
   fzf \
@@ -30,6 +32,22 @@ yay -S \
   lazydocker \
   lazygit \
   clang
+
+  
+# hyprland
+yay -S \
+  hyprsunset \
+  hyprpaper \
+  brightnessctl \ 
+  rofi \
+  rofi-calc \
+  swww \
+  hyprpolkitagent \
+  hyprshot \
+  waybar \
+  blueman \
+  pavucontrol \
+  xdg-desktop-portal-hyprland # screensharing
 
 # video
 yay -S \
@@ -56,20 +74,6 @@ yay -S \
   nemo \
   nemo-fileroller
 
-# hyprland
-yay -S \
-  hyprpanel \
-  hyprsunset \
-  brightnessctl \ 
-  rofi \
-  rofi-calc \
-  swww \
-  hyprpolkitagent \
-  hyprshot \
-  waybar \
-  blueman \
-  pavucontrol \
-  xdg-desktop-portal-hyprland # screensharing
 
 systemctl --user enable --now ssh-agent
 

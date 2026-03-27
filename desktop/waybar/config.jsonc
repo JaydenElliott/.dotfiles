@@ -1,7 +1,6 @@
 {
     "spacing": 4,
 
-    // ── Monitor 0: full bar ──
     "modules-left": [
         "hyprland/workspaces"
     ],

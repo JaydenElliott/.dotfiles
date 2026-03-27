@@ -338,8 +338,7 @@ require("lazy").setup(
           "rust_analyzer",
           "lua_ls",
           "clangd",
-          "jsonls",
-          "pyright"
+          "jsonls"
         },
 
         servers = {
@@ -457,6 +456,15 @@ require("lazy").setup(
     },
   }
 )
+
+-- Open telescope on startup if no file given
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argv(0) == "" then
+      require("telescope.builtin").find_files()
+    end
+  end,
+})
 
 
 -- custom commands

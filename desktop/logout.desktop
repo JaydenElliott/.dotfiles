@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Logout
+Comment=Exit the current session
+Exec=hyprctl dispatch exit
+Icon=system-log-out
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=logout;exit;session;
