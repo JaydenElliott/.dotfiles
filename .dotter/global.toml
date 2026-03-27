@@ -21,6 +21,8 @@ pacdef = "~/.config/pacdef"
 [desktop.files]
 "term/kitty" = "~/.config/kitty"
 "desktop/hyprland.conf" = "~/.config/hypr/hyprland.conf"
+"desktop/waybar/config.jsonc" = "~/.config/waybar/config.jsonc"
+"desktop/waybar/style.css" = "~/.config/waybar/sytle.css"
 "desktop/hyprpanel.json" = "~/.config/hyprpanel/config.json"
 "desktop/discord.json" = "~/.config/discord/settings.json"
 "desktop/wallpapers" = "~/.config/desktop/wallpapers"
