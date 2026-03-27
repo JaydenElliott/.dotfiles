@@ -457,16 +457,6 @@ require("lazy").setup(
   }
 )
 
--- Open telescope on startup if no file given
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argv(0) == "" then
-      require("telescope.builtin").find_files()
-    end
-  end,
-})
-
-
 -- custom commands
 vim.api.nvim_create_user_command('W', 'noautocmd w', {})                            -- save without formatting
 vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format() end, {}) -- format without saving
