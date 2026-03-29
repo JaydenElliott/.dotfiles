@@ -51,30 +51,30 @@ local general_keymaps = {
 
 local plugin_keymaps = {
   -- harpoon
-  { "<C-q>",      function() require('harpoon.ui').nav_prev() end,            desc = "Go to previous harpoon mark" },
-  { "<C-p>",      function() require('harpoon.ui').nav_next() end,            desc = "Go to next harpoon mark" },
-  { "<C-t>",      function() require('harpoon.ui').toggle_quick_menu() end,   desc = "Show harpoon marks" },
-  { "<leader>a",  function() require('harpoon.mark').add_file() end,          desc = "Mark file with harpoon" },
+  { "<C-q>",      function() require('harpoon.ui').nav_prev() end,                                             desc = "Go to previous harpoon mark" },
+  { "<C-p>",      function() require('harpoon.ui').nav_next() end,                                             desc = "Go to next harpoon mark" },
+  { "<C-t>",      function() require('harpoon.ui').toggle_quick_menu() end,                                    desc = "Show harpoon marks" },
+  { "<leader>a",  function() require('harpoon.mark').add_file() end,                                           desc = "Mark file with harpoon" },
 
   -- vim-kitty-navigator
-  { "<C-w>h",     "<cmd>KittyNavigateLeft<cr>",                               desc = "Navigate to left pane (Kitty)" },
-  { "<C-w>j",     "<cmd>KittyNavigateDown<cr>",                               desc = "Navigate to pane below (Kitty)" },
-  { "<C-w>k",     "<cmd>KittyNavigateUp<cr>",                                 desc = "Navigate to pane above (Kitty)" },
-  { "<C-w>l",     "<cmd>KittyNavigateRight<cr>",                              desc = "Navigate to right pane (Kitty)" },
+  { "<C-w>h",     "<cmd>KittyNavigateLeft<cr>",                                                                desc = "Navigate to left pane (Kitty)" },
+  { "<C-w>j",     "<cmd>KittyNavigateDown<cr>",                                                                desc = "Navigate to pane below (Kitty)" },
+  { "<C-w>k",     "<cmd>KittyNavigateUp<cr>",                                                                  desc = "Navigate to pane above (Kitty)" },
+  { "<C-w>l",     "<cmd>KittyNavigateRight<cr>",                                                               desc = "Navigate to right pane (Kitty)" },
 
   -- neotree
-  { "\\",         "<cmd>Neotree reveal left<cr>",                             desc = "Toggle Neo-tree" },
+  { "\\",         "<cmd>Neotree reveal left<cr>",                                                              desc = "Toggle Neo-tree" },
 
   -- telescope
-  { "<leader>ff", "<cmd>Telescope find_files<cr>",                            desc = "Find Files" },
-  { "<leader>fF", "<cmd>Telescope search_dir_picker<cr>",                     desc = "Find dir then grep" },
-  { "<leader>fh", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", desc = "Find Hidden" },
-  { "<leader>fw", "<cmd>Telescope grep_string<cr>",                           desc = "Find current Word" },
-  { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",                        desc = "Find by Grep" },
-  { "<leader>fu", "<cmd>Telescope undo<cr>",                                  desc = "Find Undo" },
-  { "<leader>df", "<cmd>Telescope diagnostics<cr>",                           desc = "Diagnostics find by File" },
-  { "gr",         "<cmd>Telescope lsp_references<cr>",                        desc = "Goto References" },
-  { "<C-r>",      function() require('telescope.builtin').resume() end,       mode = "i",                             desc = "Resume previous search" },
+  { "<leader>ff", "<cmd>Telescope find_files<cr>",                                                             desc = "Find Files" },
+  { "<leader>fF", function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, desc = "Find Files (no ignore)" },
+  { "<leader>fh", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",                                  desc = "Find Hidden" },
+  { "<leader>fw", "<cmd>Telescope grep_string<cr>",                                                            desc = "Find current Word" },
+  { "<leader>fg", "<cmd>Telescope live_grep_args<cr>",                                                         desc = "Find by Grep" },
+  { "<leader>fu", "<cmd>Telescope undo<cr>",                                                                   desc = "Find Undo" },
+  { "<leader>df", "<cmd>Telescope diagnostics<cr>",                                                            desc = "Diagnostics find by File" },
+  { "gr",         "<cmd>Telescope lsp_references<cr>",                                                         desc = "Goto References" },
+  { "<C-r>",      function() require('telescope.builtin').resume() end,                                        mode = "i",                             desc = "Resume previous search" },
   {
     "<leader>f/",
     function()
@@ -263,12 +263,17 @@ require("lazy").setup(
         vim.cmd('autocmd User TelescopePreviewerLoaded setlocal wrap')
 
         telescope.setup({
+          defaults = {
+            hidden = true,
+            no_ignore = true,
+          },
           pickers = {
             lsp_references = {
               show_line = false,
               include_declaration = false,
               include_current_line = false,
-            }
+            },
+
           },
           extensions = {
             fzf = {},

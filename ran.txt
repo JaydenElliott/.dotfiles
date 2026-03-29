@@ -88,7 +88,7 @@ todo:
 - fix screenshare for window
 - hookup hyprshot to hyprpanel button
   - hyprshot -m region -o "$outputDir" -f "$outputFile"
-  - hyprshot -m output --clipboard-only 
+  - hyprshot -m region --clipboard-only 
 - google-cloud-cli?? 
 - ssh config
 - turn off hover to foucus on window, must click

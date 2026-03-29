@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VPN Down
+Comment=Disconnect from VPN
+Exec=nmcli connection down visualcortex-2024  
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=vpn;down;
