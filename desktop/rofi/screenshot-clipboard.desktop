@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Screenshot (clipboard)
+Comment=Send a region screenshot to the clipboard
+Exec=hyprshot -m region --clipboard-only
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=screenshot;clipboard;

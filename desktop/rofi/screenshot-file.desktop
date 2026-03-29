@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Screenshot (file)
+Comment=Save a screenshot to "~/Screenshots"
+Exec=hyprshot -m region -o ~/Screenshots 
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=screenshot;file;
