@@ -8,67 +8,21 @@
         "clock"
     ],
     "modules-right": [
-        "pulseaudio",
-        "network",
-        "bluetooth",
         "battery",
-        "backlight",
-        "custom/hyprsunset"
+        "backlight"
     ],
 
-    // ── Workspaces ──
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
         "sort-by-number": true
     },
 
-    // ── Clock ──
     "clock": {
         "format": "{:%b %d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
-    // ── Volume (icon only) ──
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-bluetooth": "{icon}",
-        "format-bluetooth-muted": "󰝟",
-        "format-muted": "󰝟",
-        "format-source": "",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "󰋋",
-            "hands-free": "󰂑",
-            "headset": "󰂑",
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "tooltip-format": "{volume}%",
-        "on-click": "pavucontrol"
-    },
-
-    // ── Network (icon only) ──
-    "network": {
-        "format-wifi": "󰤨",
-        "format-ethernet": "󰈁",
-        "format-linked": "󰈁",
-        "format-disconnected": "󰤭",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "foot -e nmtui"
-    },
-
-    // ── Bluetooth (icon only) ──
-    "bluetooth": {
-        "format": "󰂯",
-        "format-connected": "󰂱",
-        "format-disabled": "󰂲",
-        "tooltip-format": "{status}",
-        "tooltip-format-connected": "{device_alias} connected",
-        "on-click": "blueman-manager"
-    },
-
-    // ── Battery (icon + percentage) ──
     "battery": {
         "states": {
             "warning": 30,
@@ -81,19 +35,19 @@
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{time} remaining"
     },
-"backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "tooltip-format": "{percent}%",
-    "on-scroll-up": "brightnessctl -d intel_backlight set 5%+",
-    "on-scroll-down": "brightnessctl -d intel_backlight set 5%-"
-},
-    // ── Hyprsunset toggle ──
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "tooltip-format": "{percent}%",
+        "on-scroll-up": "brightnessctl -d intel_backlight set 5%+",
+        "on-scroll-down": "brightnessctl -d intel_backlight set 5%-"
+    },
+
     "custom/hyprsunset": {
         "format": "󰌵",
         "tooltip-format": "Toggle night light",
         "on-click": "pidof hyprsunset && killall hyprsunset || hyprsunset -t 4500"
-    },
-
+    }
 }

@@ -1,112 +1,56 @@
-/* ── Catppuccin Frappe palette ── */
 @define-color pink #f4b8e4;
-@define-color base #303446;
-@define-color surface0 #414559;
-@define-color surface1 #51576d;
 @define-color text #c6d0f5;
-@define-color subtext0 #a5adce;
-@define-color overlay0 #737994;
-@define-color mantle #292c3c;
-@define-color crust #232634;
 
-/* ── Global ── */
 * {
     font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 0.7rem;
 }
 
 window#waybar {
-    background: alpha(@base, 0.9);
+    background: alpha(#303446, 0.9);
     color: @text;
 }
 
-/* remove default button styling */
 button {
     box-shadow: none;
     border: none;
     border-radius: 0;
 }
 
-/* ── Shared module padding ── */
 #clock,
-#pulseaudio,
-#network,
-#bluetooth,
 #battery,
-#custom-hyprsunset,
+#backlight,
 #custom-notifications {
     padding: 0 8px;
     color: @pink;
 }
 
-/* ── Workspaces (keep default look) ── */
-#workspaces button {
-    padding: 0 5px;
-    color: @overlay0;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s ease;
+#backlight {
+    margin-right: 10px;
 }
 
-#workspaces button:not(.empty) {
-    color: @text;
-}
-
-#workspaces button.active {
-    color: @pink;
-    border-bottom: 2px solid @pink;
-}
-
-#workspaces button:hover {
-    background: @surface0;
-    color: @text;
-}
-
-#workspaces button.urgent {
-    color: #e78284; /* Frappe red */
-}
-
-/* ── Clock ── */
 #clock {
     font-weight: 600;
 }
 
-/* ── Battery states ── */
-#battery.warning {
-    color: #e5c890; /* Frappe yellow */
+#workspaces button {
+    padding: 0 5px;
+    color: #737994;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
 }
 
+#workspaces button:not(.empty) { color: @text; }
+#workspaces button.active      { color: @pink; border-bottom: 2px solid @pink; }
+#workspaces button:hover       { background: #414559; color: @text; }
+#workspaces button.urgent      { color: #e78284; }
+
+#battery.warning                { color: #e5c890; }
 #battery.critical:not(.charging) {
-    color: #e78284; /* Frappe red */
+    color: #e78284;
     animation: blink 1s linear infinite;
 }
 
 @keyframes blink {
     to { color: @text; }
-}
-
-/* ── Pulseaudio muted ── */
-#pulseaudio.muted {
-    color: @overlay0;
-}
-
-/* ── Network disconnected ── */
-#network.disconnected {
-    color: @overlay0;
-}
-
-/* ── Bluetooth disabled ── */
-#bluetooth.disabled {
-    color: @overlay0;
-}
-
-/* ── Tooltips ── */
-tooltip {
-    background: @mantle;
-    border: 1px solid @surface1;
-    border-radius: 8px;
-    color: @text;
-}
-
-tooltip label {
-    padding: 4px 8px;
 }

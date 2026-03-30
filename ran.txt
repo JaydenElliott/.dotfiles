@@ -1,19 +1,26 @@
-# clipboard
-```
-sudo pacman -S cliphist
-```
 
-then added to hyprland config:
-```
-exec-once = wl-paste --type text --watch cliphist store # Stores only text data
-exec-once = wl-paste --type image --watch cliphist store # Stores only image data
+archinstall
 
 ```
+Mirror: Australia
+Disk configuration: ext4
+Bootloader: systemd-boot
+Authentication : new user
+Profile: Hyprland, nvidia (open kernel), ly (greeter)
+Applications: bluetooth: enabled, audio: pipewire
+Network: Use network manager (default backend)
+
+
+# yay
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
+
+#  clipboard
+yay -S cliphist
 
 
 # term
 yay -S \
-  git \
   wget \
   curl \
   htop \
@@ -77,19 +84,15 @@ yay -S \
 
 systemctl --user enable --now ssh-agent
 
-turn off wifi powersave (is potentially causing dropouts)
+# turn off wifi powersave (is potentially causing dropouts)
+# i had to also pin wifi band
 
 /etc/NetworkManager/conf.d/wifi-powersave-off.conf 
 ```
 sudo vim /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 ```
+
   
 todo:
-- fix screenshare for window
-- hookup hyprshot to hyprpanel button
-  - hyprshot -m region -o "$outputDir" -f "$outputFile"
-  - hyprshot -m region --clipboard-only 
-- google-cloud-cli?? 
 - ssh config
-- turn off hover to foucus on window, must click
 
