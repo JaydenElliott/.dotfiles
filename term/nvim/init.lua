@@ -31,7 +31,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
       end
       vim.cmd('TSUpdate')
     end
-
   end
 })
 
@@ -162,12 +161,12 @@ require('fzf-lua').setup({
 })
 
 vim.keymap.set('n', "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find Files" })
-vim.keymap.set('n', "<leader>fF", function() 
-    require('fzf-lua').files({ fd_opts = "--color=never --type f --hidden --no-ignore --exclude .git" }) 
-  end, { desc = "Find Files (no ignore)" })
-vim.keymap.set('n', "<leader>fh", function() 
+vim.keymap.set('n', "<leader>fF", function()
   require('fzf-lua').files({ fd_opts = "--color=never --type f --hidden --no-ignore --exclude .git" })
-  end, { desc = "Find Hidden" })
+end, { desc = "Find Files (no ignore)" })
+vim.keymap.set('n', "<leader>fh", function()
+  require('fzf-lua').files({ fd_opts = "--color=never --type f --hidden --no-ignore --exclude .git" })
+end, { desc = "Find Hidden" })
 vim.keymap.set('v', "<leader>fv", "<cmd>FzfLua grep_visual<cr>", { desc = "Find visual selection" })
 vim.keymap.set('n', "<leader>fg", "<cmd>FzfLua live_grep<cr>", { desc = "Find by Grep" })
 vim.keymap.set('n', "<leader>fd", "<cmd>FzfLua diagnostics_document<cr>", { desc = "Diagnostics" })
@@ -218,10 +217,15 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
 vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code Action' })
 vim.keymap.set('n', '<leader>rw', vim.lsp.buf.rename, { desc = 'Rename' })
 vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = 'Open diagnostic' })
-vim.keymap.set('n', '<leader>dp', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Previous error' })
-vim.keymap.set('n', '<leader>dn', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Next error' })
-vim.keymap.set('n', '[q', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Previous error' })
-vim.keymap.set('n', ']q', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Next error' })
+vim.keymap.set('n', '<leader>dp',
+  function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end,
+  { desc = 'Previous error' })
+vim.keymap.set('n', '<leader>dn',
+  function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Next error' })
+vim.keymap.set('n', '[q', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end,
+  { desc = 'Previous error' })
+vim.keymap.set('n', ']q', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end,
+  { desc = 'Next error' })
 
 -- Format on save
 vim.api.nvim_create_autocmd('BufWritePre', {
@@ -261,3 +265,10 @@ cmp.setup({
   }),
 })
 
+
+-- Copy absolute path of current file to clipboard
+vim.api.nvim_create_user_command('Path', function()
+  local path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', path)
+  print('Copied: ' .. path)
+end, {})
