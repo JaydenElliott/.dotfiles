@@ -50,6 +50,7 @@ vim.pack.add({
   -- navigation
   { src = 'https://github.com/theprimeagen/harpoon' },
   { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim' },
+  { src = 'https://github.com/stevearc/oil.nvim' },
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/mikesmithgh/kitty-scrollback.nvim' },
   { src = 'https://github.com/ibhagwan/fzf-lua' },
@@ -124,6 +125,10 @@ require('neo-tree').setup({
 })
 vim.keymap.set('n', "\\", "<cmd>Neotree reveal left<cr>")
 
+-- Oil
+require('oil').setup()
+vim.keymap.set('n', "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+
 -- Treesitter
 require('nvim-treesitter.config').setup({
   ensure_installed = {
@@ -158,6 +163,11 @@ require('fzf-lua').setup({
       includeDeclaration = false,
     },
   },
+  keymap = {
+    fzf = {
+      ["ctrl-q"] = "select-all+accept",
+    },
+  },
 })
 
 vim.keymap.set('n', "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find Files" })
@@ -173,6 +183,12 @@ vim.keymap.set('n', "<leader>fd", "<cmd>FzfLua diagnostics_document<cr>", { desc
 vim.keymap.set('n', "<leader>f/", "<cmd>FzfLua lgrep_curbuf<cr>", { desc = "Fuzzy search current buffer" })
 vim.keymap.set('n', "gr", "<cmd>FzfLua lsp_references<cr>", { desc = "Goto References" })
 vim.keymap.set('i', "<C-r>", "<cmd>FzfLua resume<cr>", { desc = "Resume previous search" })
+
+-- Harpoon
+vim.keymap.set('n', "<C-q>", function() require('harpoon.ui').nav_prev() end, { desc = "Previous harpoon mark" })
+vim.keymap.set('n', "<C-p>", function() require('harpoon.ui').nav_next() end, { desc = "Next harpoon mark" })
+vim.keymap.set('n', "<C-t>", function() require('harpoon.ui').toggle_quick_menu() end, { desc = "Show harpoon marks" })
+vim.keymap.set('n', "<leader>a", function() require('harpoon.mark').add_file() end, { desc = "Mark file with harpoon" })
 
 -- LSP
 require('mason').setup()
@@ -272,3 +288,5 @@ vim.api.nvim_create_user_command('Path', function()
   vim.fn.setreg('+', path)
   print('Copied: ' .. path)
 end, {})
+
+vim.api.nvim_create_user_command('PackUpdate', function() vim.pack.update() end, {})
