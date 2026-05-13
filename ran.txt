@@ -48,9 +48,9 @@ yay -S \
   brightnessctl \ 
   rofi \
   rofi-calc \
-  swww \
   hyprpolkitagent \
   hyprshot \
+  hyprpaper \
   waybar \
   blueman \
   pavucontrol \
