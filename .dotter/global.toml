@@ -26,7 +26,6 @@ pacdef = "~/.config/pacdef"
 "desktop/waybar/style.css" = "~/.config/waybar/style.css"
 "desktop/discord.json" = "~/.config/discord/settings.json"
 "desktop/wallpapers" = "~/.config/desktop/wallpapers"
-"desktop/ulauncher.json" = "~/.config/ulauncher/settings.json"
 
 "desktop/rofi/shutdown.desktop" = "~/.local/share/applications/shutdown.desktop"
 "desktop/rofi/reboot.desktop" = "~/.local/share/applications/reboot.desktop"
