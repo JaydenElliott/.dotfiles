@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="/home/jayden/Documents/scratchpads"
+DIR="/home/jayden/Documents/Obsidian/work-notes/scratchpads"
 mkdir -p "$DIR"
 
 # Find the largest n
