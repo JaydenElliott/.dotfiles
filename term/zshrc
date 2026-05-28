@@ -9,6 +9,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 path+=/usr/bin
 path+=/opt/cuda/bin
 path+=$HOME/.local/bin
+path+=/opt/google-cloud-cli/bin
 export PATH
 
 plugins=(
@@ -32,8 +33,8 @@ export ORT_LIB_LOCATION="/opt/onnxruntime"
 # todo: export useful docker command for finding host ip
 alias dockerhost=ip addr show docker0 | grep -Po 'inet \K[\d.]+'
 
-#export CLOUDSDK_PYTHON=/home/jayden/.pyenv/shims/python3
 export CLOUDSDK_PYTHON=/usr/bin/python3
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 # kitty fix
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh"

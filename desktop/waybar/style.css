@@ -41,6 +41,7 @@ button {
 }
 
 #workspaces button:not(.empty) { color: @text; }
+#workspaces button.visible     { color: @text; border-bottom: 2px solid @text; }
 #workspaces button.active      { color: @pink; border-bottom: 2px solid @pink; }
 #workspaces button:hover       { background: #414559; color: @text; }
 #workspaces button.urgent      { color: #e78284; }

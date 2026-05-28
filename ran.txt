@@ -54,7 +54,8 @@ yay -S \
   waybar \
   blueman \
   pavucontrol \
-  xdg-desktop-portal-hyprland # screensharing
+  xdg-desktop-portal-hyprland  \
+  noto-fonts-emoji
 
 # video
 yay -S \
@@ -67,6 +68,7 @@ yay -S \
 yay -S \
   docker \
   docker-compose \
+  google-cloud-cli-lite \
   networkmanager-openvpn \
   nm-connection-editor \
   nasm \
