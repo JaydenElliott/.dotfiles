@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wifi Cubes
+Comment=Connect to wifi
+Exec=nmcli connection up 'Cubes.co Guest'
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=wifi;

@@ -20,12 +20,13 @@ button {
 #clock,
 #battery,
 #backlight,
+#pulseaudio,
 #custom-notifications {
     padding: 0 8px;
     color: @pink;
 }
 
-#backlight {
+#pulseaudio {
     margin-right: 10px;
 }
 

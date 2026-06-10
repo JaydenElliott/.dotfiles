@@ -48,7 +48,6 @@ vim.pack.add({
   { src = 'https://github.com/petertriho/nvim-scrollbar' },
 
   -- navigation
-  { src = 'https://github.com/theprimeagen/harpoon' },
   { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim' },
   { src = 'https://github.com/stevearc/oil.nvim' },
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
@@ -180,18 +179,16 @@ end, { desc = "Find Hidden" })
 vim.keymap.set('v', "<leader>fv", "<cmd>FzfLua grep_visual<cr>", { desc = "Find visual selection" })
 vim.keymap.set('n', "<leader>fg", "<cmd>FzfLua live_grep<cr>", { desc = "Find by Grep" })
 vim.keymap.set('n', "<leader>fG", function()
-  require('fzf-lua').live_grep({ rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore-dot -g '!.git'" })
+  require('fzf-lua').live_grep({
+    rg_opts =
+    "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore-dot -g '!.git'"
+  })
 end, { desc = "Find by Grep (no .ignore)" })
 vim.keymap.set('n', "<leader>fd", "<cmd>FzfLua diagnostics_document<cr>", { desc = "Diagnostics" })
 vim.keymap.set('n', "<leader>f/", "<cmd>FzfLua lgrep_curbuf<cr>", { desc = "Fuzzy search current buffer" })
 vim.keymap.set('n', "gr", "<cmd>FzfLua lsp_references<cr>", { desc = "Goto References" })
 vim.keymap.set('i', "<C-r>", "<cmd>FzfLua resume<cr>", { desc = "Resume previous search" })
 
--- Harpoon
-vim.keymap.set('n', "<C-q>", function() require('harpoon.ui').nav_prev() end, { desc = "Previous harpoon mark" })
-vim.keymap.set('n', "<C-p>", function() require('harpoon.ui').nav_next() end, { desc = "Next harpoon mark" })
-vim.keymap.set('n', "<C-t>", function() require('harpoon.ui').toggle_quick_menu() end, { desc = "Show harpoon marks" })
-vim.keymap.set('n', "<leader>a", function() require('harpoon.mark').add_file() end, { desc = "Mark file with harpoon" })
 
 -- LSP
 require('mason').setup()
@@ -219,16 +216,8 @@ vim.lsp.config('rust_analyzer', {
   },
 })
 
-vim.lsp.config('lua_ls', {
-  settings = {
-    Lua = {
-      format = { enable = true },
-      hint = { enable = false },
-    },
-  },
-})
 
-vim.lsp.enable({ 'rust_analyzer', 'lua_ls', 'clangd', 'jsonls', 'pyright' })
+vim.lsp.enable({ 'rust_analyzer', 'clangd', 'jsonls', 'pyright' })
 
 -- LSP keymaps (global — only act when an LSP is attached)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
@@ -257,6 +246,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
   end,
 })
+
 
 -- Completion
 local cmp = require('cmp')
@@ -293,3 +283,32 @@ vim.api.nvim_create_user_command('Path', function()
 end, {})
 
 vim.api.nvim_create_user_command('PackUpdate', function() vim.pack.update() end, {})
+
+vim.keymap.set('n', "<leader>u", 'i"<C-r>=system("uuidgen")[:-2]<CR>",<Esc>', { desc = "Generate UUID" })
+
+local function pack_clean()
+  local active_plugins = {}
+  local unused_plugins = {}
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    active_plugins[plugin.spec.name] = plugin.active
+  end
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    if not active_plugins[plugin.spec.name] then
+      table.insert(unused_plugins, plugin.spec.name)
+    end
+  end
+
+  if #unused_plugins == 0 then
+    print("No unused plugins.")
+    return
+  end
+
+  local choice = vim.fn.confirm("Remove unused plugins?", "&Yes\n&No", 2)
+  if choice == 1 then
+    vim.pack.del(unused_plugins)
+  end
+end
+
+vim.api.nvim_create_user_command('PackClean', function() pack_clean() end, {})
