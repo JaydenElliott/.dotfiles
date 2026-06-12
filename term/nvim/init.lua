@@ -209,7 +209,7 @@ vim.lsp.config('rust_analyzer', {
         bindingModeHints = { enable = true },
         closureCaptureHints = { enable = true },
         closureReturnTypeHints = { enable = 'always' },
-        expressionAdjustmentHints = { enable = 'always' },
+        expressionAdjustmentHints = { enable = 'never' }, -- keep general type hints but remove pointer/reference hints e.g. (&(* <TYPE>))
       },
       diagnostics = { enable = true },
     },
