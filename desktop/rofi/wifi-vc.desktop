@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Wifi VC
+Name=Wifi VisualCortex
 Comment=Connect to wifi
 Exec=nmcli connection up vc-priv
 Terminal=false

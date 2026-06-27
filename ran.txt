@@ -11,16 +11,14 @@ Applications: bluetooth: enabled, audio: pipewire
 Network: Use network manager (default backend)
 
 
-# yay
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
 
 #  clipboard
-yay -S cliphist
+pacman -S cliphist
 
 
 # term
-yay -S \
+pacman -S \
   wget \
   curl \
   htop \
@@ -42,7 +40,7 @@ yay -S \
 
   
 # hyprland
-yay -S \
+pacman -S \
   hyprsunset \
   hyprpaper \
   brightnessctl \ 
@@ -58,17 +56,16 @@ yay -S \
   noto-fonts-emoji
 
 # video
-yay -S \
+pacman -S \
   ffmpeg \
   mediainfo \
   mediainfo-gui \
   mpv
 
 # work
-yay -S \
+pacman -S \
   docker \
   docker-compose \
-  google-cloud-cli-lite \
   networkmanager-openvpn \
   nm-connection-editor \
   nasm \
@@ -76,12 +73,22 @@ yay -S \
   nvidia-container-toolkit
 
 # desktop
-yay -S \
+pacman -S \
   vivaldi \
   obsidian \
-  spotify \
   nemo \
   nemo-fileroller
+
+
+
+# yay
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
+# desktop - AUR
+yay -S \
+  spotify \
+  visual-studio-code-bin \
+  google-cloud-cli
 
 
 systemctl --user enable --now ssh-agent

@@ -282,6 +282,23 @@ vim.api.nvim_create_user_command('Path', function()
   print('Copied: ' .. path)
 end, {})
 
+-- Capture the cwd at startup so :cd later doesn't affect :PathR
+local _startup_cwd = vim.fn.getcwd()
+
+-- Copy path relative to the *parent* of where nvim was started (includes the project root name)
+vim.api.nvim_create_user_command('PathR', function()
+  local abs = vim.fn.expand('%:p')
+  local strip = vim.fn.fnamemodify(_startup_cwd, ':h')
+  local rel
+  if abs:sub(1, #strip) == strip then
+    rel = abs:sub(#strip + 2)
+  else
+    rel = abs
+  end
+  vim.fn.setreg('+', rel)
+  print('Copied: ' .. rel)
+end, {})
+
 vim.api.nvim_create_user_command('PackUpdate', function() vim.pack.update() end, {})
 
 vim.keymap.set('n', "<leader>u", 'i"<C-r>=system("uuidgen")[:-2]<CR>",<Esc>', { desc = "Generate UUID" })
