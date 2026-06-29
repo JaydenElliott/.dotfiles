@@ -211,7 +211,10 @@ vim.lsp.config('rust_analyzer', {
         closureReturnTypeHints = { enable = 'always' },
         expressionAdjustmentHints = { enable = 'never' }, -- keep general type hints but remove pointer/reference hints e.g. (&(* <TYPE>))
       },
-      diagnostics = { enable = true },
+      diagnostics = {
+        enable = true,
+        disabled = { 'macro-error' },
+      },
     },
   },
 })

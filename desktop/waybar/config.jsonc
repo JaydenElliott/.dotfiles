@@ -15,7 +15,7 @@
 
     "hyprland/workspaces": {
         "format": "{icon}",
-        "on-click": "activate",
+        "on-click": "hyprctl dispatch 'hl.dsp.focus({workspace=\"{name}\"})'",
         "sort-by-number": true
     },
 
