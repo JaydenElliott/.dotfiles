@@ -4,3 +4,5 @@
   
 [includeIf "gitdir:~/visualcortex/"]
   path = .gitconfig-visualcortex
+[init]
+	defaultBranch = main

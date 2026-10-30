@@ -16,6 +16,7 @@ pacdef = "~/.config/pacdef"
 "term/lazygit.yml" = "~/.config/lazygit/config.yml"
 "term/dircolors" = "~/.dircolors"
 "term/tealdeer.toml" = "~/.config/tealdeer/config.toml"
+"term/claude-settings.json" = "~/.claude/settings.json"
 "term/docker.json" = { target = "/etc/docker/daemon.json", owner = 0, type = "symbolic" }
 
 [desktop.files]
@@ -24,6 +25,7 @@ pacdef = "~/.config/pacdef"
 "desktop/hyprpaper.conf" = "~/.config/hypr/hyprpaper.conf"
 "desktop/waybar/config.jsonc" = "~/.config/waybar/config.jsonc"
 "desktop/waybar/style.css" = "~/.config/waybar/style.css"
+"desktop/waybar/claude-monitor-hook.sh" = "~/.config/waybar/claude-monitor-hook.sh"
 "desktop/discord.json" = "~/.config/discord/settings.json"
 "desktop/wallpapers" = "~/.config/desktop/wallpapers"
 
@@ -36,3 +38,5 @@ pacdef = "~/.config/pacdef"
 "desktop/rofi/wifi-cubes.desktop" = "~/.local/share/applications/wifi-cubes.desktop"
 "desktop/rofi/screenshot-clipboard.desktop" = "~/.local/share/applications/screenshot-clipboard.desktop"
 "desktop/rofi/screenshot-file.desktop" = "~/.local/share/applications/screenshot-file.desktop"
+"desktop/rofi/vivaldi-personal.desktop" = "~/.local/share/applications/vivaldi-personal.desktop"
+"desktop/rofi/vivaldi-work.desktop" = "~/.local/share/applications/vivaldi-work.desktop"

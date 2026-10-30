@@ -53,6 +53,7 @@ vim.pack.add({
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/mikesmithgh/kitty-scrollback.nvim' },
   { src = 'https://github.com/ibhagwan/fzf-lua' },
+  { src = 'https://github.com/theprimeagen/harpoon',             version = 'harpoon2' },
 
   -- treesitter
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter',  version = 'main' },
@@ -124,6 +125,18 @@ require('neo-tree').setup({
 })
 vim.keymap.set('n', "\\", "<cmd>Neotree reveal left<cr>")
 
+-- Harpoon
+local harpoon = require('harpoon')
+harpoon:setup()
+vim.keymap.set('n', '<C-t>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+  { desc = 'Harpoon quick menu' })
+vim.keymap.set('n', '<leader>p', function() harpoon:list():add() end,
+  { desc = 'Harpoon add file' })
+vim.keymap.set('n', '<C-q>', function() harpoon:list():prev({ ui_nav_wrap = true }) end,
+  { desc = 'Harpoon previous file' })
+vim.keymap.set('n', '<C-p>', function() harpoon:list():next({ ui_nav_wrap = true }) end,
+  { desc = 'Harpoon next file' })
+
 -- Oil
 require('oil').setup()
 vim.keymap.set('n', "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
@@ -153,6 +166,7 @@ require('fzf-lua').setup({
   },
   files = {
     fd_opts = "--color=never --type f --hidden --follow --exclude .git",
+    fzf_opts = { ["--keep-right"] = true },
   },
   grep = {
     rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden -g '!.git'",
@@ -160,6 +174,11 @@ require('fzf-lua').setup({
   lsp = {
     references = {
       includeDeclaration = false,
+    },
+    fzf_opts = {
+      ["--keep-right"] = true,
+      ["--delimiter"] = ":",
+      ["--with-nth"] = "1,2",
     },
   },
   keymap = {
@@ -223,7 +242,29 @@ vim.lsp.config('rust_analyzer', {
 vim.lsp.enable({ 'rust_analyzer', 'clangd', 'jsonls', 'pyright' })
 
 -- LSP keymaps (global — only act when an LSP is attached)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
+-- Goto definition, ignoring hits inside cargo/rustup when the project has one
+local function goto_definition()
+  vim.lsp.buf.definition({
+    on_list = function(opts)
+      local items = opts.items
+      local project_items = vim.tbl_filter(function(item)
+        return not (item.filename:find('/.cargo/registry/', 1, true)
+          or item.filename:find('/.rustup/', 1, true))
+      end, items)
+      if #project_items > 0 then items = project_items end
+
+      if #items == 1 then
+        vim.cmd("normal! m'")
+        vim.cmd.edit(vim.fn.fnameescape(items[1].filename))
+        vim.api.nvim_win_set_cursor(0, { items[1].lnum, math.max(items[1].col - 1, 0) })
+      else
+        vim.fn.setqflist({}, ' ', { title = opts.title, items = items })
+        require('fzf-lua').quickfix()
+      end
+    end,
+  })
+end
+vim.keymap.set('n', 'gd', goto_definition, { desc = 'Goto Definition' })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
 vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code Action' })
 vim.keymap.set('n', '<leader>rw', vim.lsp.buf.rename, { desc = 'Rename' })

@@ -10,4 +10,4 @@ if [ -z "$latest" ]; then
     latest=1
 fi
 
-kitty --class scratchpad nvim "$DIR/scratchpad_${latest}.md"
+kitty --class scratchpad --directory "$DIR" nvim "scratchpad_${latest}.md"

@@ -8,3 +8,9 @@ Host github.com
 Host gitlab.com
     IdentityFile ~/.ssh/work/gitlab
 
+    
+Host MACBOOK_SERVER
+  HostName macbook-server
+  User jayden
+  IdentityFile "/home/jayden/.ssh/macbook-server"
+  PreferredAuthentications publickey  

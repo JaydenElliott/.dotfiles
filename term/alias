@@ -2,14 +2,32 @@ alias s="kitty +kitten ssh"
 alias lg="lazygit"
 alias ld="lazydocker"
 alias dt="cd ~/.dotfiles"
-alias open="nautilus ."
+alias open="nemo . &>/dev/null &"
 alias yay-rm="yay -Rns"
 alias pacman-rm="pacman -Rs"
 alias du="docker compose up -d --no-deps --force-recreate  --build --remove-orphans"
 alias dd="docker compose down"
 alias sshc="nvim ~/.ssh/config.d/work"
-alias sp="nvim ~/Documents/scrachpad"
+alias sp="cd $SP"
 alias pbcopy="xclip -selection clipboard"
 alias vc="cd $VC"
 alias vcg="cd $VCG"
+alias vcgd="cd $VCGD"
+alias ml='cd /home/jayden/visualcortex/repos/ml-core-worktrees'
 alias scan="sudo nmcli device wifi rescan"
+alias claude "CLAUDE_CODE_ENABLE_TODO_TOOLS=1 claude"
+
+gwa() {
+  local branch="$1"
+  local base="${2:-main}"
+
+  if [ -z "$branch" ]; then
+    echo "Usage: gwa <branch-name> [base-branch]"
+    return 1
+  fi
+
+  local repo_name
+  repo_name=$(basename "$(git rev-parse --show-toplevel)")
+
+  git worktree add "../${repo_name}-worktrees/${branch}" -b "${branch}" "${base}"
+}

@@ -22,7 +22,7 @@ end
 for i = 1, 5 do
   hl.workspace_rule({ workspace = tostring(i), monitor = 0, persistent = true })
 end
-for i = 6, 9 do
+for i = 6, 10 do
   hl.workspace_rule({ workspace = tostring(i), monitor = 1, persistent = true, default = true })
 end
 
@@ -68,8 +68,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
 
 hl.config({
   general = {
-    gaps_in  = 10,
-    gaps_out = 10,
+    gaps_in  = 5,
+    gaps_out = 5,
     col      = { active_border = "rgba(33ccffee)" },
     layout   = "master",
   },
@@ -169,6 +169,8 @@ for _, i in ipairs({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }) do
   hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
   hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
+hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = 10 }))
+hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.layout("swapwithmaster"))
 
@@ -186,6 +188,12 @@ hl.bind("SUPER + grave", hl.dsp.window.cycle_next({ same_class = true }))
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Brightness keys (F5/F6 emit XF86MonBrightness keysyms, same commands as waybar scroll)
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -d intel_backlight set 5%-"),
+  { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -d intel_backlight set 5%+"),
+  { locked = true, repeating = true })
 
 
 -- window rules

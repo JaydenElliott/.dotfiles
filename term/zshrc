@@ -43,3 +43,14 @@ export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 export DISABLE_TELEMETRY=1
 export DISABLE_ERROR_REPORTING=1
 export DISABLE_BUG_COMMAND=1
+
+# bun completions
+[ -s "/home/jayden/.bun/_bun" ] && source "/home/jayden/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/jayden/.local/bin:$PATH"

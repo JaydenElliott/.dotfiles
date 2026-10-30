@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vivaldi - Work
+Comment=Vivaldi with the Work profile
+Exec=vivaldi --profile-directory="Profile 1" %U
+Icon=vivaldi
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+Keywords=browser;work;
+StartupWMClass=vivaldi-stable
